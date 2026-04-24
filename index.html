@@ -1,0 +1,420 @@
+---
+layout: default
+---
+
+<!-- ═══════════════════════════════════════════════════════
+     HERO SECTION
+════════════════════════════════════════════════════════ -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="eyebrow">
+          <span class="typewriter" data-text="SSgt · USAF · TSgt June 2026">SSgt · USAF · TSgt June 2026</span>
+        </div>
+        <h1 class="hero-name">
+          Todd R. <span class="last">Hardeman</span>
+        </h1>
+        <p class="hero-title">Principal Systems &amp; Solutions Architect</p>
+        <p class="hero-bio">
+          Operations project manager, systems architect, and full-stack developer with 8+ years leading
+          high-consequence technical missions. Combining military precision with AI/ML innovation to deliver
+          enterprise-level impact — from $116M in cost avoidance to national-level security operations.
+        </p>
+        <div class="hero-meta">
+          <span class="badge">🔒 Secret Clearance</span>
+          <span class="badge">2A974 Avionics</span>
+          <span class="badge">Full-Stack Dev</span>
+          <span class="badge">AI/ML Focus</span>
+        </div>
+        <div class="hero-ctas">
+          <a href="#projects" class="btn btn-primary">View Portfolio</a>
+          <a href="#contact" class="btn btn-ghost">Get In Touch</a>
+        </div>
+      </div>
+
+      <div class="hero-logo-area">
+        <div class="logo-frame">
+          <span class="corner-bracket tl"></span>
+          <span class="corner-bracket tr"></span>
+          <span class="corner-bracket bl"></span>
+          <span class="corner-bracket br"></span>
+          <iframe
+            class="animated-logo-iframe"
+            src="{{ '/assets/images/logo-animated.html' | relative_url }}"
+            title="Todd Hardeman Animated Logo"
+            scrolling="no"
+            sandbox="allow-scripts allow-same-origin"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     ABOUT SECTION
+════════════════════════════════════════════════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">01 · About</div>
+      <h2 class="section-title">Who I Am</h2>
+      <p class="section-sub">From aircraft avionics to AI-powered enterprise systems</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>
+          Staff Sergeant Todd R. Hardeman serves as a lead Software Project Manager and Avionics Technician
+          for the 660th Aircraft Maintenance Squadron at Travis Air Force Base, California. In this capacity,
+          he directs digital transformation initiatives and manages logistics for a multi-billion-dollar aviation fleet.
+        </p>
+        <p>
+          A premier innovator within Air Mobility Command, Sergeant Hardeman engineered a hardware solution for
+          Large Aircraft Infrared Countermeasures (LAIRCM) systems projected to avoid over $812 million in annual
+          maintenance costs. He also pioneered the first Unmanned Aerial System (UAS) inspection of the C-17
+          platform, reducing inspection duration by 92% and establishing an enterprise-wide precedent for
+          automated maintenance.
+        </p>
+        <p>
+          His expeditionary expertise was forged during a 2019 deployment to Al Dhafra Air Base and a 2025
+          deployment as Lead Systems Specialist, synchronizing global connectivity assets and secure data-link
+          architectures — including Link-16 operations — in support of national-level security objectives.
+        </p>
+
+        <ul class="awards-list">
+          <li>2025 Gen Larry O. Spencer Innovation Award Nominee</li>
+          <li>2025 Non-Commissioned Officer of the Year Nominee</li>
+          <li>2024 Non-Commissioned Officer of the Year (Wing Level / 60 AMW)</li>
+          <li>2023 Non-Commissioned Officer of the Year (Squadron Level)</li>
+          <li>2022 Airman of the Year (Wing, Group, &amp; Squadron Level)</li>
+          <li>Air Force Commendation Medal (2023)</li>
+          <li>Air Force Achievement Medal &amp; Good Conduct Medals</li>
+        </ul>
+      </div>
+
+      <div class="stats-grid reveal">
+        <div class="stat-card">
+          <span class="stat-number">$116M</span>
+          <span class="stat-label">Annual Savings Achieved (LAIRCM Plug)</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">92%</span>
+          <span class="stat-label">Inspection Duration Reduction (UAS C-17)</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">10K+</span>
+          <span class="stat-label">Members on Knowledge Platform</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">8+</span>
+          <span class="stat-label">Years High-Consequence Operations</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">179</span>
+          <span class="stat-label">Aircraft Fleet Protected via Safety Investigation</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">18</span>
+          <span class="stat-label">AF General Officers Served (Automated Reporting)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     PROJECTS SECTION
+════════════════════════════════════════════════════════ -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">02 · Projects</div>
+      <h2 class="section-title">Portfolio Projects</h2>
+      <p class="section-sub">Eight high-impact initiatives spanning engineering, software, and strategic operations</p>
+    </div>
+
+    <div class="projects-grid">
+      {% assign sorted_projects = site.projects | sort: "number" %}
+      {% for project in sorted_projects %}
+      <a href="{{ project.url | relative_url }}" class="project-card reveal">
+        <div class="card-header">
+          <h3 class="card-title">{{ project.title }}</h3>
+          <span class="card-num">P{{ project.number }}</span>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">{{ project.summary }}</p>
+          {% if project.impact_short %}
+          <div class="card-impact">{{ project.impact_short }}</div>
+          {% endif %}
+          <div class="card-tags">
+            {% for tag in project.tags limit:4 %}
+              <span class="tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="card-arrow">View Details</span>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     SKILLS SECTION
+════════════════════════════════════════════════════════ -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">03 · Capabilities</div>
+      <h2 class="section-title">Core Skills</h2>
+      <p class="section-sub">A rare combination of military operations, systems engineering, and software development</p>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-category reveal">
+        <div class="skill-cat-title">Leadership & Management</div>
+        <ul class="skill-list">
+          <li>Project Lifecycle Management</li>
+          <li>Team Leadership & Mentoring</li>
+          <li>Strategic Planning</li>
+          <li>Resource Management</li>
+          <li>Organizational Development</li>
+          <li>Process Improvement</li>
+          <li>Root Cause Analysis</li>
+          <li>Agile Micro-Team Leadership</li>
+        </ul>
+      </div>
+
+      <div class="skill-category reveal">
+        <div class="skill-cat-title">Software Development</div>
+        <ul class="skill-list">
+          <li>Full-Stack Development</li>
+          <li>JavaScript / React / Vite</li>
+          <li>MS Power Platform</li>
+          <li>Power Apps</li>
+          <li>Power Automate</li>
+          <li>Git / GitHub</li>
+          <li>UI/UX Design (Figma)</li>
+          <li>AI/ML Engineering</li>
+        </ul>
+      </div>
+
+      <div class="skill-category reveal">
+        <div class="skill-cat-title">Systems & Networking</div>
+        <ul class="skill-list">
+          <li>Enterprise Networking</li>
+          <li>Classified/Unclassified Systems</li>
+          <li>Secure Data-Link Architecture</li>
+          <li>Link-16 Operations</li>
+          <li>Hardware/Software Integration</li>
+          <li>Systems Troubleshooting</li>
+          <li>FCC GROL Licensed</li>
+          <li>COMPTIA Security+ (In Progress)</li>
+        </ul>
+      </div>
+
+      <div class="skill-category reveal">
+        <div class="skill-cat-title">Aviation & Operations</div>
+        <ul class="skill-list">
+          <li>KC-10 / KC-46 Avionics</li>
+          <li>Safety Investigation Boards</li>
+          <li>Technical Investigation</li>
+          <li>Telemetry Data Analysis</li>
+          <li>Fleet Resource Management</li>
+          <li>CAD / 3D Printing (Fusion 360)</li>
+          <li>UAS / Drone Operations</li>
+          <li>Expeditionary Operations</li>
+        </ul>
+      </div>
+
+      <div class="skill-category reveal">
+        <div class="skill-cat-title">Engineering & Innovation</div>
+        <ul class="skill-list">
+          <li>Hardware Design & Prototyping</li>
+          <li>Additive Manufacturing</li>
+          <li>Material Science (ASA, Silicone)</li>
+          <li>Cost-Benefit Analysis</li>
+          <li>Digital Transformation</li>
+          <li>Automation Strategy</li>
+          <li>Knowledge Management</li>
+          <li>Enterprise System Design</li>
+        </ul>
+      </div>
+
+      <div class="skill-category reveal">
+        <div class="skill-cat-title">Communication & Coordination</div>
+        <ul class="skill-list">
+          <li>Executive Briefings</li>
+          <li>Stakeholder Liaison</li>
+          <li>Technical Documentation</li>
+          <li>Inter-Agency Coordination</li>
+          <li>Military-Academic Partnerships</li>
+          <li>Secure Communications</li>
+          <li>Training Program Design</li>
+          <li>Compliance Management</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     EDUCATION SECTION
+════════════════════════════════════════════════════════ -->
+<section id="education">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">04 · Education</div>
+      <h2 class="section-title">Education &amp; Certifications</h2>
+      <p class="section-sub">Continuous learning across technical, engineering, and software disciplines</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="edu-timeline reveal">
+        <div class="edu-item">
+          <div class="edu-year">In Progress · 2025–</div>
+          <div class="edu-degree">B.S. Computer Science — AI/ML Engineering</div>
+          <div class="edu-school">Arkansas State University</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-year">2025</div>
+          <div class="edu-degree">Full-Stack Software Developer Graduate</div>
+          <div class="edu-school">Galvanize Inc. (SDI)</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-year">2024</div>
+          <div class="edu-degree">Associate of Science — Engineering Technology</div>
+          <div class="edu-school">DeVry University</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-year">2023</div>
+          <div class="edu-degree">Airman Leadership School</div>
+          <div class="edu-school">McGuire Air Force Base, NJ</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-year">2022</div>
+          <div class="edu-degree">A.S. Avionics System Technology</div>
+          <div class="edu-school">Community College of the Air Force (CCAF)</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-year">2022</div>
+          <div class="edu-degree">Principles of Instruction Course</div>
+          <div class="edu-school">McGuire Air Force Base, NJ</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-year">2017</div>
+          <div class="edu-degree">Basic Military Training</div>
+          <div class="edu-school">Lackland Air Force Base, TX</div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="skill-category" style="margin-bottom:1.5rem;">
+          <div class="skill-cat-title">Certifications & Licenses</div>
+          <ul class="skill-list">
+            <li>FCC General Radiotelephone Operator License (GROL)</li>
+            <li>COMPTIA Security+ (In Progress)</li>
+            <li>MS Power Platform Certified Developer</li>
+          </ul>
+        </div>
+
+        <div class="skill-category">
+          <div class="skill-cat-title">Professional Memberships</div>
+          <ul class="skill-list">
+            <li>USAF Writing Assistance Info-Share</li>
+            <li>Travis Phoenix Spark Innovation Lab</li>
+          </ul>
+        </div>
+
+        <div class="stat-card" style="margin-top:1.5rem;">
+          <span class="stat-number">June 2026</span>
+          <span class="stat-label">Promotion to Technical Sergeant</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════
+     CONTACT SECTION
+════════════════════════════════════════════════════════ -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">05 · Contact</div>
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="section-sub">Available for professional inquiries and leadership opportunities</p>
+    </div>
+
+    <div class="contact-inner">
+      <div class="contact-info reveal">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Location</div>
+            <div class="contact-value">Travis Air Force Base, CA 94534</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-label">Phone</div>
+            <div class="contact-value"><a href="tel:5595535761">559-553-5761</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value"><a href="mailto:todd.hardeman@us.af.mil">todd.hardeman@us.af.mil</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🔒</div>
+          <div>
+            <div class="contact-label">Security Clearance</div>
+            <div class="contact-value">Secret · AFSC 2A974</div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <p style="font-size:0.85rem;color:var(--text-muted);font-style:italic;">
+          "My professional foundation is built upon technical accuracy, transparency, and the highest standards of
+          ethical conduct. I maintain a standard of excellence that does not allow for the misrepresentation of data."
+        </p>
+      </div>
+
+      <div class="resume-download reveal">
+        <div class="section-label" style="margin-bottom:1.2rem;">Download</div>
+        <h3 style="margin-bottom:0.5rem;">Professional Documents</h3>
+        <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:1.5rem;">
+          Full resume, official biography, and additional materials available upon request.
+        </p>
+        <div style="display:flex;flex-direction:column;gap:0.8rem;">
+          <a href="{{ '/assets/docs/Todd_Hardeman_Resume_2026.pdf' | relative_url }}" class="btn btn-primary" download>
+            ↓ Download Resume (2026)
+          </a>
+          <a href="{{ '/assets/docs/Official_Bio_SSgt_Hardeman.pdf' | relative_url }}" class="btn btn-ghost" download>
+            ↓ Official USAF Biography
+          </a>
+        </div>
+        <div class="divider"></div>
+        <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--text-muted);">
+          <div>RANK: Technical Sergeant (June 2026)</div>
+          <div>AFSC: 2A974 — Heavy Aircraft Avionics</div>
+          <div>UNIT: 660th AMXS / Travis AFB</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Todd Self Promo — Logo Assembly</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: transparent;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Courier New', monospace;
+}
+
+/* Transparent background for iframe embedding */
+
+#logo-container {
+  width: 480px;
+  height: 480px;
+  position: relative;
+  /* After assembly: float loop */
+  animation: floatLoop 6s ease-in-out infinite;
+  animation-delay: 3.2s; /* starts after assembly completes */
+  animation-fill-mode: both;
+}
+
+@keyframes floatLoop {
+  0%,100% { transform: translateY(0)   rotate(0deg); }
+  30%      { transform: translateY(-10px) rotate(0.3deg); }
+  70%      { transform: translateY(-6px)  rotate(-0.2deg); }
+}
+
+#logo-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* ═══ SLICE ANIMATION ═══════════════════════════════════════════
+   Each .slice-X group starts displaced + invisible,
+   then flies in to its natural position.
+   transform-origin must be the SVG's logical center.
+   In the SVG viewBox "44 23 122 142", center ≈ (105, 94)
+   which in % of viewBox = ((105-44)/122)*100 = 50%, ((94-23)/142)*100 = 50%
+   So transform-origin: 50% 50% works perfectly.
+*/
+
+.slice {
+  transform-box: fill-box;
+  transform-origin: center center;
+}
+
+/* ── Slice A: TOP — slides in from above ── */
+.slice-A {
+  opacity: 0;
+  transform: translateY(-85px);
+  animation: slideFromTop 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+  animation-delay: 0.0s;
+}
+@keyframes slideFromTop {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Slice B: TOP-RIGHT ── */
+.slice-B {
+  opacity: 0;
+  transform: translate(74px, -43px);
+  animation: slideFromTopRight 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+  animation-delay: 0.12s;
+}
+@keyframes slideFromTopRight {
+  to { opacity: 1; transform: translate(0, 0); }
+}
+
+/* ── Slice C: BOTTOM-RIGHT ── */
+.slice-C {
+  opacity: 0;
+  transform: translate(74px, 43px);
+  animation: slideFromBottomRight 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+  animation-delay: 0.24s;
+}
+@keyframes slideFromBottomRight {
+  to { opacity: 1; transform: translate(0, 0); }
+}
+
+/* ── Slice D: BOTTOM ── */
+.slice-D {
+  opacity: 0;
+  transform: translateY(85px);
+  animation: slideFromBottom 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+  animation-delay: 0.36s;
+}
+@keyframes slideFromBottom {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Slice E: BOTTOM-LEFT ── */
+.slice-E {
+  opacity: 0;
+  transform: translate(-74px, 43px);
+  animation: slideFromBottomLeft 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+  animation-delay: 0.48s;
+}
+@keyframes slideFromBottomLeft {
+  to { opacity: 1; transform: translate(0, 0); }
+}
+
+/* ── Slice F: TOP-LEFT ── */
+.slice-F {
+  opacity: 0;
+  transform: translate(-74px, -43px);
+  animation: slideFromTopLeft 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
+  animation-delay: 0.60s;
+}
+@keyframes slideFromTopLeft {
+  to { opacity: 1; transform: translate(0, 0); }
+}
+
+/* ── Slice T: TEAL RING — scales in from center ── */
+.slice-T {
+  opacity: 0;
+  transform: scale(0.4);
+  transform-origin: 50% 50%;
+  animation: scaleInTeal 0.65s cubic-bezier(0.34,1.56,0.64,1) forwards;
+  animation-delay: 1.05s;
+}
+@keyframes scaleInTeal {
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ── Slice Z: CENTER — scales in last with overshoot ── */
+.slice-Z {
+  opacity: 0;
+  transform: scale(0.2);
+  transform-origin: 50% 50%;
+  animation: scaleInCenter 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards;
+  animation-delay: 1.4s;
+}
+@keyframes scaleInCenter {
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ── LOCK PULSE: whole logo pulses once after assembly ── */
+#logo-main-g {
+  animation: lockPulse 0.45s cubic-bezier(0.22,1,0.36,1) forwards;
+  animation-delay: 2.15s;
+  transform-origin: 50% 50%;
+}
+@keyframes lockPulse {
+  0%   { transform: scale(1); filter: drop-shadow(0 0 0px rgba(126,216,209,0)); }
+  45%  { transform: scale(1.045); filter: drop-shadow(0 0 18px rgba(126,216,209,0.7)); }
+  100% { transform: scale(1); filter: drop-shadow(0 0 0px rgba(126,216,209,0)); }
+}
+
+/* ── Controls ── */
+#controls {
+  margin-top: 22px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: rgba(0,0,0,0.35);
+  padding: 12px 18px;
+  border-radius: 4px;
+}
+button {
+  background: transparent;
+  border: 1px solid rgba(126,216,209,0.35);
+  color: #7ed8d1;
+  padding: 8px 18px;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+button:hover {
+  background: rgba(126,216,209,0.08);
+  border-color: #7ed8d1;
+  box-shadow: 0 0 16px rgba(126,216,209,0.18);
+}
+button:active { transform: scale(0.97); }
+button:disabled { opacity: 0.35; cursor: not-allowed; }
+
+#status {
+  margin-top: 10px;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: rgba(126,216,209,0.45);
+  text-align: center;
+}
+#prog-wrap {
+  width: 300px; height: 2px;
+  background: rgba(126,216,209,0.1);
+  margin-top: 6px; display: none;
+}
+#prog-bar {
+  height: 100%; background: #7ed8d1;
+  width: 0; transition: width 0.08s linear;
+}
+canvas { display: none; }
+</style>
+</head>
+<body>
+
+<!-- JSZip library for PNG sequence export -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+<div id="logo-container">
+  <svg
+   width="100%"
+   height="100%"
+   viewBox="44 23 122 142" id="logo-svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"><title
+     id="title2">hexagon diagnol</title><defs
+     id="defs1"><linearGradient
+       id="linearGradient305"><stop
+         style="stop-color:#9ea4a9;stop-opacity:1;"
+         offset="0"
+         id="stop307" /><stop
+         style="stop-color:#697277;stop-opacity:1;"
+         offset="0.48184818"
+         id="stop305" /><stop
+         style="stop-color:#949ea0;stop-opacity:1;"
+         offset="1"
+         id="stop306" /></linearGradient><linearGradient
+       id="linearGradient291"><stop
+         style="stop-color:#e8eced;stop-opacity:1;"
+         offset="0.77887791"
+         id="stop291" /><stop
+         style="stop-color:#acb5b7;stop-opacity:1;"
+         offset="1"
+         id="stop292" /></linearGradient><linearGradient
+       id="linearGradient289"><stop
+         style="stop-color:#9ca5a8;stop-opacity:1;"
+         offset="0"
+         id="stop289" /><stop
+         style="stop-color:#c6cacc;stop-opacity:1;"
+         offset="1"
+         id="stop290" /></linearGradient><linearGradient
+       id="linearGradient285"><stop
+         style="stop-color:#969fa1;stop-opacity:1;"
+         offset="0"
+         id="stop285" /><stop
+         style="stop-color:#26333b;stop-opacity:0;"
+         offset="1"
+         id="stop286" /></linearGradient><linearGradient
+       id="linearGradient283"><stop
+         style="stop-color:#828c8f;stop-opacity:1;"
+         offset="0"
+         id="stop283" /><stop
+         style="stop-color:#26333b;stop-opacity:0;"
+         offset="1"
+         id="stop284" /></linearGradient><linearGradient
+       id="linearGradient281"><stop
+         style="stop-color:#dce0e1;stop-opacity:1;"
+         offset="0"
+         id="stop281" /><stop
+         style="stop-color:#26333b;stop-opacity:1;"
+         offset="1"
+         id="stop282" /></linearGradient><linearGradient
+       id="linearGradient277"><stop
+         style="stop-color:#969fa1;stop-opacity:1;"
+         offset="0"
+         id="stop277" /><stop
+         style="stop-color:#eaebec;stop-opacity:1;"
+         offset="1"
+         id="stop278" /></linearGradient><linearGradient
+       id="linearGradient267"><stop
+         style="stop-color:#3a8284;stop-opacity:1;"
+         offset="0"
+         id="stop267" /><stop
+         style="stop-color:#7ed8d1;stop-opacity:1;"
+         offset="0.6270628"
+         id="stop268" /><stop
+         style="stop-color:#cad8db;stop-opacity:1;"
+         offset="0.79867989"
+         id="stop274" /><stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0.88448846"
+         id="stop275" /><stop
+         style="stop-color:#d2d3d2;stop-opacity:1;"
+         offset="1"
+         id="stop276" /></linearGradient><linearGradient
+       id="linearGradient253"><stop
+         style="stop-color:#d7dadb;stop-opacity:1;"
+         offset="0"
+         id="stop253" /><stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0.359736"
+         id="stop255" /><stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0.75577557"
+         id="stop256" /><stop
+         style="stop-color:#a9b0b2;stop-opacity:1;"
+         offset="1"
+         id="stop254" /></linearGradient><linearGradient
+       id="linearGradient245"><stop
+         style="stop-color:#6f787f;stop-opacity:1;"
+         offset="0"
+         id="stop245" /><stop
+         style="stop-color:#d5d9da;stop-opacity:1;"
+         offset="0.96039605"
+         id="stop246" /></linearGradient><linearGradient
+       id="linearGradient243"><stop
+         style="stop-color:#bbbfc3;stop-opacity:1;"
+         offset="0.52805281"
+         id="stop243" /><stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="1"
+         id="stop244" /></linearGradient><linearGradient
+       id="linearGradient234"><stop
+         style="stop-color:#828c8f;stop-opacity:1;"
+         offset="0"
+         id="stop234" /><stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0.80528051"
+         id="stop235" /></linearGradient><linearGradient
+       id="linearGradient226"><stop
+         style="stop-color:#828c8f;stop-opacity:1;"
+         offset="0"
+         id="stop227" /><stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0.59735972"
+         id="stop229" /><stop
+         style="stop-color:#8febde;stop-opacity:1;"
+         offset="1"
+         id="stop228" /></linearGradient><linearGradient
+       id="linearGradient214"><stop
+         style="stop-color:#2d7074;stop-opacity:1;"
+         offset="0.49834982"
+         id="stop214" /><stop
+         style="stop-color:#8febde;stop-opacity:1;"
+         offset="1"
+         id="stop215" /></linearGradient><linearGradient
+       id="swatch47"><stop
+         style="stop-color:#ff0000;stop-opacity:0;"
+         offset="0"
+         id="stop47" /></linearGradient><linearGradient
+       id="swatch46"><stop
+         style="stop-color:#000000;stop-opacity:1;"
+         offset="0"
+         id="stop46" /></linearGradient><linearGradient
+       xlink:href="#linearGradient214"
+       id="linearGradient215"
+       x1="124.80193"
+       y1="145.45801"
+       x2="154.52162"
+       y2="111.26938"
+       gradientUnits="userSpaceOnUse" /><linearGradient
+       xlink:href="#linearGradient226"
+       id="linearGradient228"
+       x1="112.07776"
+       y1="118.60078"
+       x2="120.17896"
+       y2="78.526901"
+       gradientUnits="userSpaceOnUse" /><linearGradient
+       xlink:href="#linearGradient234"
+       id="linearGradient235"
+       x1="104.52074"
+       y1="115.26562"
+       x2="104.52074"
+       y2="94.055817"
+       gradientUnits="userSpaceOnUse" /><linearGradient
+       xlink:href="#linearGradient243"
+       id="linearGradient244"
+       x1="103.96223"
+       y1="135.92634"
+       x2="110.18933"
+       y2="135.92634"
+       gradientUnits="userSpaceOnUse" /><linearGradient
+       xlink:href="#linearGradient245"
+       id="linearGradient246"
+       x1="66.998917"
+       y1="150.06413"
+       x2="88.330475"
+       y2="135.67583"
+       gradientUnits="userSpaceOnUse" /><linearGradient
+       xlink:href="#linearGradient253"
+       id="linearGradient254"
+       x1="70.65802"
+       y1="138.3394"
+       x2="85.578186"
+       y2="149.58253"
+       gradientUnits="userSpaceOnUse" /><linearGradient
+       xlink:href="#linearGradient267"
+       id="linearGradient268"
+       x1="111.19193"
+       y1="141.93436"
+       x2="110.1453"
+       y2="81.97319"
+       gradientUnits="userSpaceOnUse" /><linearGradient
+       xlink:href="#linearGradient277"
+       id="linearGradient278"
+       x1="123.94729"
+       y1="145.96329"
+       x2="136.80038"
+       y2="130.091"
+       gradientUnits="userSpaceOnUse" /><linearGradient
+       xlink:href="#linearGradient281"
+       id="linearGradient282"
+       x1="129.1895"
+       y1="109.04631"
+       x2="145.97212"
+       y2="124.69635"
+       gradientUnits="userSpaceOnUse" /><linearGradient
+       xlink:href="#linearGradient283"
+       id="linearGradient284"
+       x1="88.62288"
+       y1="146.32576"
+       x2="116.22091"
+       y2="146.32576"
+       gradientUnits="userSpaceOnUse" /><linearGradient
+       xlink:href="#linearGradient285"
+       id="linearGradient286"
+       x1="127.13474"
+       y1="155.34682"
+       x2="140.62457"
+       y2="155.34682"
+       gradientUnits="userSpaceOnUse" /><linearGradient
+       xlink:href="#linearGradient289"
+       id="linearGradient290"
+       x1="157.48251"
+       y1="113.15131"
+       x2="166.50952"
+       y2="86.934929"
+       gradientUnits="userSpaceOnUse" /><linearGradient
+       xlink:href="#linearGradient291"
+       id="linearGradient292"
+       x1="154.9332"
+       y1="88.735741"
+       x2="166.24228"
+       y2="110.93107"
+       gradientUnits="userSpaceOnUse" /><linearGradient
+       xlink:href="#linearGradient305"
+       id="linearGradient306"
+       x1="146.51227"
+       y1="179.75388"
+       x2="88.690979"
+       y2="179.75388"
+       gradientUnits="userSpaceOnUse" /><linearGradient
+       xlink:href="#linearGradient253"
+       id="linearGradient317"
+       x1="158.248"
+       y1="154.97064"
+       x2="167.94505"
+       y2="141.12183"
+       gradientUnits="userSpaceOnUse" /><linearGradient
+       xlink:href="#linearGradient245"
+       id="linearGradient326"
+       x1="157.87297"
+       y1="142.34764"
+       x2="172.1832"
+       y2="157.69347"
+       gradientUnits="userSpaceOnUse" /><linearGradient
+       xlink:href="#linearGradient245"
+       id="linearGradient332"
+       x1="86.832642"
+       y1="101.48943"
+       x2="68.313644"
+       y2="88.034584"
+       gradientUnits="userSpaceOnUse" /></defs><g
+     id="layer1"><g
+       id="layer2"
+       style="display:inline" /><g
+       id="g333"
+       transform="translate(-15.16265,-28.51898)"><g
+         id="g229">
+<g class="slice slice-Z">
+<path
+           style="display:inline;opacity:1;fill:#26333b;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:1.2, 1.2;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 120.15999,101.72601 -17.77539,10.27734 v 20.50391 l 17.77734,10.27734 17.77735,-10.27734 v -20.50391 z"
+           id="path181" />
+</g>
+<g class="slice slice-Z">
+<path
+           style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:1.2, 1.2;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 107.6779,115.05075 v 14.40931 l 12.48368,7.21122 12.48512,-7.21122 v -14.40931 l -12.48512,-7.21122 z"
+           id="path180" />
+</g>
+<g class="slice slice-E">
+<g
+           id="g192"
+           style="display:inline;stroke:none"><path
+             style="opacity:1;fill:#26333b;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+             d="m 120.16135,102.11999 -0.001,-25.458434 39.48082,22.849608 v 45.488286 l -19.74992,11.40263 -0.95574,12.79985 -18.77286,10.87369 -50.06445,-28.98243 2.646485,-1.52343 47.417965,27.44922 16.30814,-9.41551 0.79681,-15.76685 17.08061,-9.88405 V 102.55804 L 124.29345,85.091885 124.06024,106.3824 Z"
+             id="path183" /><path
+             style="display:inline;opacity:1;fill:#26333b;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+             d="m 64.804524,154.14007 19.583685,11.33743 6.141807,-2.65694 3.097338,1.78369 -11.351209,5.72554 -22.763951,-13.14278 v -43.66454 l 13.231781,8.7329 v 27.31439 l -2.646485,1.52343 0.0055,-27.03575 -5.303587,-3.79497 z"
+             id="path187" /><path
+             style="opacity:1;fill:#26333b;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+             d="m 70.071838,154.13383 0.02565,-3.04064 2.646485,-1.52343 -0.0078,6.10643 z"
+             id="path192" /></g>
+</g>
+<g class="slice slice-F">
+<path
+           style="opacity:1;fill:#26333b;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 99.768725,136.99055 15.291505,8.08927 0.0108,1.49581 -22.478371,-12.2108 0.01972,-27.97702 19.418431,-11.084539 -0.014,1.351737 -18.100844,10.473352 -10e-7,26.47476 z"
+           id="path222" />
+</g>
+<g class="slice slice-F">
+<path
+           style="opacity:1;fill:url(#linearGradient228);stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 120.16093,73.841927 -2.61028,1.51127 0.0793,24.766663 -17.891835,10.36006 0.03061,26.51063 15.295165,8.52468 -0.0436,-5.70308 -12.63572,-7.30489 v -20.50391 l 17.77539,-10.27734 1e-5,-25.064454 z"
+           id="path223" />
+</g>
+<g class="slice slice-T">
+<path
+           style="display:inline;fill:url(#linearGradient215);stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 119.87358,76.518352 -0.29739,-3.010562 42.71075,24.479935 v 48.535155 l -19.74901,11.42271 -0.95699,12.78962 -21.41899,12.39705 -3.20541,-4.91267 3.2054,1.85603 18.77286,-10.87369 0.95574,-12.79985 19.74993,-11.40263 -0.2864,-45.631487 z"
+           id="path197" />
+</g>
+<g class="slice slice-F">
+<path
+           style="display:inline;opacity:1;fill:#26333b;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 93.627354,164.60425 -5.892603,2.81067 32.427189,18.77398 24.23412,-13.99157 0.9432,-12.82542 19.59417,-11.32561 V 96.464284 l -44.77344,-25.91601 -5.55953,3.219037 0.52515,24.756936 -18.033978,10.432233 v 26.59765 l 2.745855,1.58915 -0.07741,-26.66336 17.891833,-10.36006 -0.10125,-24.766663 2.61028,-1.51127 42.126,24.145798 1e-5,48.535155 -19.74902,11.42271 -0.95699,12.78962 -21.41899,12.39705 -3.3631,-5.1599 z"
+           id="path215" />
+</g>
+<g class="slice slice-F">
+<path
+           style="opacity:1;fill:url(#linearGradient235);fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 112.03437,94.961561 -0.0532,-20.052701 2.58648,-1.554213 0.55795,25.1696 -18.033979,10.432233 v 26.59765 l -3.175738,-1.95101 -4.2e-5,-26.47477 18.100889,-10.473342 z"
+           id="path233" />
+</g>
+<g class="slice slice-F">
+<path
+           style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 111.98118,74.90886 0.53964,20.115555 -19.908412,11.363395 -0.01971,27.97702 22.478312,12.2108 -0.0362,-5.39229 -11.07247,-6.34596 v -1.41729 l 14.02736,8.10928 -0.71159,5.70788 -1.0571,9.15505 -27.598018,-15.96317 V 104.08148 L 109.3622,92.078743 V 76.218999 Z"
+           id="path235" />
+</g>
+<g class="slice slice-F">
+<path
+           style="opacity:1;fill:#26333b;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 120.16192,142.36216 2e-5,22.43025 -36.832029,-21.3164 V 101.0346 L 105.26117,88.342173 v -9.168448 l 4.10103,-2.374 v 15.279018 l -20.73931,12.002737 -8e-6,36.34765 27.598028,15.96317 -0.0208,-18.12565 z"
+           id="path236" />
+</g>
+<g class="slice slice-F">
+<path
+           style="opacity:1;fill:url(#linearGradient244);fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 110.18933,138.43259 -0.0417,-1.43544 -6.1854,-3.57706 v 1.41729 z"
+           id="path243" />
+</g>
+<g class="slice slice-F">
+<path
+           style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="M 59.512194,113.52247 V 109.156 l 15.878266,11.10461 -10e-7,27.78571 44.771481,25.91602 13.9456,-8.07294 0.022,-15.29071 17.57147,-10.16956 v -36.34765 l -27.44752,-15.882217 0.04,-3.10738 30.05476,17.466157 v 39.39453 l -17.08061,9.88405 -0.79681,15.76685 -16.30885,9.41551 -47.417968,-27.44922 3e-6,-27.31439 z"
+           id="path244" />
+</g>
+<g class="slice slice-E">
+<path
+           style="display:inline;opacity:1;fill:url(#linearGradient246);stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 70.071836,154.13383 0.03115,-30.07639 -5.303586,-3.79497 0.0051,33.8776 19.583685,11.33743 6.141808,-2.65694 -17.789943,-10.19759 -0.0039,3.05322 z"
+           id="path245" />
+</g>
+<g class="slice slice-E">
+<path
+           style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 70.102988,124.05744 -2.651791,-1.89749"
+           id="path246" />
+</g>
+<g class="slice slice-E">
+<path
+           style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 70.071836,154.13383 -2.62083,-1.5172"
+           id="path247" />
+</g>
+<g class="slice slice-E">
+<path
+           style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 72.736172,155.67619 v 3.05567"
+           id="path248" />
+</g>
+<g class="slice slice-E">
+<path
+           style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 84.388208,165.4775 3.070904,-1.32847"
+           id="path249" />
+</g>
+<g class="slice slice-E">
+<path
+           style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 70.071836,154.13383 -2.559433,1.57389"
+           id="path250" />
+</g>
+<g class="slice slice-E">
+<path
+           style="opacity:1;fill:url(#linearGradient254);fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 72.736172,155.67619 -2.664336,-1.54236 0.03115,-30.07639 -1.325895,-0.94875 0.01503,31.81208 3.944054,2.28325 13.187486,7.60924 1.535454,-0.66423 z"
+           id="path251" />
+</g>
+<g class="slice slice-Z">
+<path
+           style="opacity:1;fill:#dcdfe0;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 120.16194,164.79241 v 3.05664"
+           id="path256" />
+</g>
+<g class="slice slice-Z">
+<path
+           style="opacity:1;fill:#dcdfe0;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="M 83.329911,143.47601 Z"
+           id="path257" />
+</g>
+<g class="slice slice-F">
+<path
+           style="opacity:1;fill:#dcdfe0;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="M 83.329911,101.0346 80.68343,99.511164"
+           id="path258" />
+</g>
+<g class="slice slice-F">
+<path
+           style="opacity:1;fill:#dcdfe0;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 105.26117,88.342173 -2.3883,-1.673736"
+           id="path259" />
+</g>
+<g class="slice slice-A">
+<path
+           style="opacity:1;fill:#26333b;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 109.3622,77.717502 -0.002,-11.614235 -4.10103,2.374391 0.002,11.864147 z"
+           id="path261" />
+</g>
+<g class="slice slice-A">
+<path
+           style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 114.60046,73.767309 -5.23826,3.032416 v -6.112793 l 10.79779,-6.251938 18.06192,10.456204 12.26489,-5.125082 5.93898,3.437742 -17.72735,8.07548 -18.53844,-10.731064 z"
+           id="path263" />
+</g>
+<g class="slice slice-A">
+<path
+           style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 120.15999,58.321712 v 3.056641"
+           id="path264" />
+</g>
+<g class="slice slice-A">
+<path
+           style="opacity:1;fill:#26333b;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 109.3622,70.686932 -0.002,-4.583665 10.79979,-6.253234 18.49555,11.146913 8.24204,-3.309979 3.58922,2.079146 -12.26489,5.125085 -18.06192,-10.456204 z"
+           id="path265" />
+</g>
+<g class="slice slice-F">
+<path
+           style="opacity:1;fill:#26333b;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 120.16194,164.58589 v 9.37645 L 75.390459,148.04632 V 96.464291 L 97.780077,83.504256 V 65.166628 l 22.380553,-12.95813 26.97386,15.615639 -6.33362,2.447587 -20.64088,-11.950012 -17.32595,10.040027 0.0388,18.306698 -22.18944,12.842727 v 45.488286 l 35.56873,20.58642 5e-4,-3.27069 z"
+           id="path266" />
+</g>
+<g class="slice slice-T">
+<path
+           style="opacity:1;fill:url(#linearGradient268);fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 116.25213,165.58587 5.3e-4,-3.06218 -32.922688,-19.04768 V 101.0346 l 21.931258,-12.692427 -0.002,-19.864515 14.90082,-8.627626 18.49555,11.146912 1.99813,-0.802442 -20.49367,-11.87279 -17.32596,10.040027 0.0388,18.306698 -22.189468,12.842727 3.2e-5,45.488286 z"
+           id="path267" />
+</g>
+<g class="slice slice-B">
+<path
+           style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 124.25349,88.199263 1.87272,0.951265 v 16.022722 l -2.03973,-1.17753 z"
+           id="path276" />
+</g>
+<g class="slice slice-C">
+<path
+           style="opacity:1;fill:url(#linearGradient278);fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 120.16194,173.96234 2.79883,-1.6159 V 144.2235 l 17.625,-10.19281 v -23.55078 l -14.50416,-8.38796 0.0446,3.0813 11.81308,6.8301 v 20.50391 l -17.77735,10.27734 z"
+           id="path277" />
+</g>
+<g class="slice slice-C">
+<path
+           style="display:inline;opacity:1;fill:#26333b;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 122.96077,172.34644 11.14677,-6.45704 0.022,-15.29071 17.57148,-10.16956 v -36.34765 l -25.5748,-14.930952 -0.0446,12.941422 14.50416,8.38796 v 23.55078 l -17.625,10.19281 z"
+           id="path278" />
+</g>
+<g class="slice slice-B">
+<path
+           style="opacity:1;fill:url(#linearGradient282);stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 126.09867,97.143269 0.008,-4.815569 22.94738,13.27721 v 33.30078 l -4.33492,2.50925 0.10054,-33.36111 z"
+           id="path281" />
+</g>
+<g class="slice slice-T">
+<path
+           style="display:inline;opacity:1;fill:url(#linearGradient284);stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 116.22091,156.3923 v -3.04924 l -27.598027,-15.98384 -3e-6,3.06991 z"
+           id="path282" />
+</g>
+<g class="slice slice-T">
+<path
+           style="display:inline;opacity:1;fill:url(#linearGradient286);stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 127.13474,169.92587 v -21.39248 l 13.42373,-7.76561 0.0661,3.0171 -10.78044,6.23727 0.0556,18.3047 z"
+           id="path284" />
+</g>
+<g class="slice slice-B">
+<path
+           style="display:inline;opacity:1;fill:#26333b;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 138.69843,81.279338 17.72735,-8.075481 24.38719,14.119871 v 43.664552 l -13.23306,-8.70891 V 94.940852 l -22.22396,-12.84989 -2.80924,1.415315 z"
+           id="path286" />
+</g>
+<g class="slice slice-B">
+<path
+           style="display:inline;opacity:1;fill:url(#linearGradient290);fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 153.81178,77.830864 21.70758,12.539676 0.34017,31.88483 -5.63312,-3.66921 -10e-6,-25.168745 -22.0939,-12.725295"
+           id="path288" />
+</g>
+<g class="slice slice-B">
+<path
+           style="opacity:1;fill:url(#linearGradient292);fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 148.1325,80.692119 2.89152,-1.446041 21.84886,12.647898 0.17009,28.526784 -2.81656,-1.8346 -10e-6,-25.168747 z"
+           id="path289" />
+</g>
+<g class="slice slice-D">
+<path
+           style="opacity:1;fill:#a7abae;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 87.544467,170.34195 1.470705,-2.16816"
+           id="path292" />
+</g>
+<g class="slice slice-D">
+<path
+           style="opacity:1;fill:#a7abae;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="M 120.16194,189.24554 V 186.1889"
+           id="path293" />
+</g>
+<g class="slice slice-D">
+<path
+           style="opacity:1;fill:#a7abae;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="M 120.16194,187.71722 88.279818,169.25787"
+           id="path294" />
+</g>
+<g class="slice slice-D">
+<path
+           style="opacity:1;fill:#a7abae;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="M 144.39606,172.19733 Z"
+           id="path295" />
+</g>
+<g class="slice slice-D">
+<path
+           style="opacity:1;fill:#a7abae;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 145.57222,174.62115 -1.17616,-2.42382"
+           id="path296" />
+</g>
+<g class="slice slice-D">
+<path
+           style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 86.046759,172.54992 3.967692,-2.28772 30.147489,17.45502 24.8222,-14.30798 -0.38393,-1.36925 -24.43827,14.14891 -32.210192,-18.72188 -5.675603,2.86277 z"
+           id="path297" />
+</g>
+<g class="slice slice-C">
+<path
+           style="opacity:1;fill:#a7abae;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 148.21274,157.71101 1.57861,2.15573"
+           id="path298" />
+</g>
+<g class="slice slice-C">
+<path
+           style="opacity:1;fill:#a7abae;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 145.33926,159.37191 2.54485,1.59885"
+           id="path299" />
+</g>
+<g class="slice slice-C">
+<path
+           style="opacity:1;fill:#a7abae;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 145.57222,174.62115 3.59804,-2.17082"
+           id="path300" />
+</g>
+<g class="slice slice-C">
+<path
+           style="opacity:1;fill:#a7abae;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 147.37124,173.53574 0.51287,-12.56498"
+           id="path301" />
+</g>
+<g class="slice slice-C">
+<path
+           style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 144.98414,173.40924 1.52812,-0.91945 0.81396,-11.19608 20.25369,-11.72395 v -18.39498 l -2.64648,-1.6364 -10e-6,18.50794 -19.59418,11.32559 -0.9432,12.82542 z"
+           id="path302" />
+</g>
+<g class="slice slice-B">
+<path
+           style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 142.54671,83.506277 22.38672,12.958006 v 28.992947 l 15.87954,10.71622 v -5.18517 l -13.23306,-8.70891 V 94.940852 L 145.35595,82.09096 Z"
+           id="path303" />
+</g>
+<g class="slice slice-T">
+<path
+           style="opacity:1;fill:#26333b;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 164.93343,125.45723 15.87954,10.44331 v 21.26334 l -26.5005,15.36674 0.21302,-6.23672 20.99387,-12.15383 v -17.83309 l -10.58593,-6.7686 z"
+           id="path304" />
+</g>
+<g class="slice slice-D">
+<path
+           style="opacity:1;fill:url(#linearGradient306);fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 88.690997,171.02458 1.323453,-0.76238 30.14749,17.45502 26.35032,-15.22743 -0.11046,1.56336 -26.23986,15.19239 z"
+           id="path305" />
+</g>
+<g class="slice slice-C">
+<path
+           style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 154.31246,172.53061 0.44871,-12.48493 -4.45835,2.58087 -0.76171,12.66673 z"
+           id="path307" />
+</g>
+<g class="slice slice-C">
+<path
+           style="opacity:1;fill:#26333b;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 86.046759,172.54992 2.644238,-1.52534 31.470943,18.22096 26.23986,-15.19239 0.92442,-12.75944 20.25369,-11.72395 v -18.39498 l 2.64648,1.7479 1e-5,18.17051 -19.92358,11.53336 -0.76171,12.66673 -29.37661,17.00893 z"
+           id="path308" />
+</g>
+<g class="slice slice-C">
+<path
+           style="opacity:1;fill:#26333b;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 170.2264,151.09319 v 3.05549 l -2.63478,1.52528 -0.0117,-6.1042 z"
+           id="path309" />
+</g>
+<g class="slice slice-C">
+<path
+           style="opacity:1;fill:#26333b;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 170.22639,132.92268 2.59713,1.66059"
+           id="path310" />
+</g>
+<g class="slice slice-C">
+<path
+           style="opacity:1;fill:#26333b;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 172.87288,152.61663 -2.64648,-1.52344"
+           id="path311" />
+</g>
+<g class="slice slice-Z">
+<path
+           style="opacity:1;fill:#26333b;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 154.76117,160.04568 -0.23568,6.24822"
+           id="path312" />
+</g>
+<g class="slice slice-Z">
+<path
+           style="opacity:1;fill:#26333b;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 154.76117,160.04568 -0.11784,3.12411"
+           id="path313" />
+</g>
+<g class="slice slice-Z">
+<path
+           style="opacity:1;fill:#26333b;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 154.76117,160.04568 -0.0589,1.56205"
+           id="path314" />
+</g>
+<g class="slice slice-C">
+<path
+           style="opacity:1;fill:#26333b;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 172.87288,152.61663 -2.64648,1.53205"
+           id="path315" />
+</g>
+<g class="slice slice-C">
+<path
+           style="opacity:1;fill:url(#linearGradient317);fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 154.70227,161.60773 -0.0589,1.56206 16.90631,-9.78714 -0.0247,-19.62968 -1.29856,-0.83029 1e-5,19.69825 z"
+           id="path316" />
+</g>
+<g class="slice slice-C">
+<path
+           style="opacity:1;fill:#b1b5b9;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 154.70227,161.60773 0.0589,-1.56205 12.8246,-7.42382 0.003,1.53144 z"
+           id="path324" />
+</g>
+<g class="slice slice-C">
+<path
+           style="opacity:1;fill:url(#linearGradient326);fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 154.64337,163.16979 -0.10656,3.11835 20.98255,-12.14807 v -17.83309 l -3.99438,-2.55401 0.0247,19.62968 z"
+           id="path325" />
+</g>
+<g class="slice slice-E">
+<path
+           style="display:inline;opacity:1;fill:#26333b;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="M 75.390459,120.26061 59.512194,109.97472 59.524709,87.302069 92.760193,68.07311 v 12.225035 l -22.662711,13.11927 v 19.791245 l 5.292969,3.02331 z"
+           id="path326" />
+</g>
+<g class="slice slice-E">
+<path
+           style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 92.704207,68.105622 5.07587,-2.938994 v 18.337628 l -22.389618,12.960035 -8e-6,19.767679 -5.292969,-3.02331 8e-6,-19.791245 22.662703,-13.119272 z"
+           id="path327" />
+</g>
+<g class="slice slice-E">
+<path
+           style="display:inline;opacity:1;fill:#a4a9ad;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="M 64.804522,110.15277 V 90.37054 L 89.018527,76.343186 v 3.06505 l -21.567521,12.48574 2.65e-4,19.754334 z"
+           id="path329" />
+</g>
+<g class="slice slice-E">
+<path
+           style="opacity:1;fill:#a4a9ad;fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 64.804522,90.37054 2.646484,1.523434"
+           id="path330" />
+</g>
+<g class="slice slice-E">
+<path
+           style="opacity:1;fill:url(#linearGradient332);fill-opacity:1;stroke:none;stroke-width:0.0499999;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+           d="m 67.451271,111.64831 -1.323375,-0.74777 -1.32e-4,-19.768283 22.890763,-13.256546 v 1.532525 l -21.567521,12.48574 z"
+           id="path331" />
+</g>
+
+</g></g></g></svg>
+</div>
+
+<div id="controls">
+  <button id="btn-replay">↺ Replay Assembly</button>
+  <button id="btn-png">⬇ PNG Sequence (90 frames)</button>
+  <button id="btn-webm">⬇ Export WebM</button>
+</div>
+<div id="status">Assembly animation · transparent background · loops with float after</div>
+<div id="prog-wrap"><div id="prog-bar"></div></div>
+<canvas id="export-canvas"></canvas>
+
+<script>
+// ── Replay ──────────────────────────────────────────────────────
+document.getElementById('btn-replay').addEventListener('click', () => {
+  // Remove + re-add all animated elements to restart CSS animations
+  const container = document.getElementById('logo-container');
+  const mainG     = document.getElementById('logo-main-g');
+  const slices    = document.querySelectorAll('.slice');
+
+  // Reset container float
+  container.style.animation = 'none';
+  mainG.style.animation = 'none';
+  slices.forEach(el => { el.style.animation = 'none'; });
+
+  void container.offsetWidth; // force reflow
+
+  container.style.animation = '';
+  mainG.style.animation     = '';
+  slices.forEach(el => { el.style.animation = ''; });
+
+  document.getElementById('status').textContent = 'Replaying assembly...';
+  setTimeout(() => {
+    document.getElementById('status').textContent = 'Assembly animation · transparent background · loops with float after';
+  }, 3500);
+});
+
+// ── PNG Sequence Export ─────────────────────────────────────────
+document.getElementById('btn-png').addEventListener('click', async () => {
+  try {
+    // Check if JSZip is loaded
+    if (typeof JSZip === 'undefined') {
+      throw new Error('JSZip library not loaded. Please refresh the page.');
+    }
+
+    const btn    = document.getElementById('btn-png');
+    const status = document.getElementById('status');
+    const progW  = document.getElementById('prog-wrap');
+    const progB  = document.getElementById('prog-bar');
+    const canvas = document.getElementById('export-canvas');
+    const ctx    = canvas.getContext('2d');
+
+    const SIZE   = 512;
+    const FRAMES = 90;
+    const FPS    = 30;
+
+    btn.disabled = true;
+    canvas.width = canvas.height = SIZE;
+    progW.style.display = 'block';
+    status.textContent = 'Preparing ZIP export...';
+
+    const svgEl  = document.getElementById('logo-svg');
+    const slices = document.querySelectorAll('.slice');
+    const mainG  = document.getElementById('logo-main-g') || svgEl;
+
+    const zip = new JSZip();
+
+  function easeOutBack(x) {
+    const c1 = 1.70158, c3 = c1 + 1;
+    return 1 + c3 * Math.pow(x-1, 3) + c1 * Math.pow(x-1, 2);
+  }
+  function easeOut(x) {
+    return 1 - Math.pow(1-x, 3);
+  }
+
+  const sliceConfigs = [
+    ['A', 0.00,  0.7, 'translate',   0,  -85],
+    ['B', 0.12,  0.7, 'translate',  74,  -43],
+    ['C', 0.24,  0.7, 'translate',  74,   43],
+    ['D', 0.36,  0.7, 'translate',   0,   85],
+    ['E', 0.48,  0.7, 'translate', -74,   43],
+    ['F', 0.60,  0.7, 'translate', -74,  -43],
+    ['T', 1.05,  0.65,'scale',       0,    0],
+    ['Z', 1.40,  0.6, 'scale',       0,    0],
+  ];
+
+  for (let i = 0; i < FRAMES; i++) {
+    const t = i / FPS;
+
+    // ---- Apply animation state (UNCHANGED LOGIC) ----
+    sliceConfigs.forEach(([suffix, delay, dur, type, tx, ty]) => {
+      const els = document.querySelectorAll(`.slice-${suffix}`);
+      const elapsed = Math.max(0, t - delay);
+      const p = Math.min(1, elapsed / dur);
+      const ep = type === 'scale' ? easeOutBack(p) : easeOut(p);
+
+      els.forEach(el => {
+        el.style.opacity = p > 0 ? '1' : '0';
+
+        if (type === 'translate') {
+          el.style.transform = `translate(${tx*(1-ep)}px, ${ty*(1-ep)}px)`;
+        } else {
+          const startScale = suffix === 'T' ? 0.4 : 0.2;
+          const sc = startScale + (1 - startScale) * Math.max(0, ep);
+          el.style.transform = `scale(${sc})`;
+        }
+
+        el.style.animation = 'none';
+      });
+    });
+
+    const pulseP = Math.min(1, Math.max(0, (t - 2.15) / 0.45));
+    const pulseSc = 1 + 0.045 * Math.sin(pulseP * Math.PI);
+    mainG.style.animation = 'none';
+    mainG.style.transform = `scale(${pulseSc})`;
+
+    // ---- Serialize SVG ----
+    let svgStr = new XMLSerializer().serializeToString(svgEl);
+    if (!svgStr.includes('xmlns=')) {
+      svgStr = svgStr.replace(
+        '<svg ',
+        '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" '
+      );
+    }
+
+    const blob = new Blob([svgStr], { type: 'image/svg+xml' });
+    const url  = URL.createObjectURL(blob);
+
+    const pngBlob = await new Promise((res, rej) => {
+      const img = new Image();
+      img.onload = () => {
+        try {
+          ctx.clearRect(0, 0, SIZE, SIZE);
+          ctx.drawImage(img, 0, 0, SIZE, SIZE);
+          URL.revokeObjectURL(url);
+          canvas.toBlob((blob) => {
+            if (blob) res(blob);
+            else rej(new Error('Failed to create PNG blob'));
+          }, 'image/png');
+        } catch(e) {
+          rej(e);
+        }
+      };
+      img.onerror = (err) => {
+        URL.revokeObjectURL(url);
+        rej(new Error(`Failed to load SVG image: ${err}`));
+      };
+      img.src = url;
+    });
+
+    // ---- Add to ZIP instead of downloading ----
+    zip.file(`frame_${String(i).padStart(4,'0')}.png`, pngBlob);
+
+    progB.style.width = `${Math.round((i+1)/FRAMES*100)}%`;
+    status.textContent = `Rendering frame ${i+1} / ${FRAMES}...`;
+
+    await new Promise(r => setTimeout(r, 10));
+    }
+
+    status.textContent = 'Compressing ZIP...';
+
+    const zipBlob = await zip.generateAsync({ type: 'blob' });
+
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(zipBlob);
+    a.download = 'logo_sequence.zip';
+    a.click();
+
+    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+
+    // Restore animation state
+    document.querySelectorAll('.slice').forEach(el => {
+      el.style.animation = '';
+      el.style.transform = '';
+      el.style.opacity   = '';
+    });
+    mainG.style.animation = '';
+    mainG.style.transform = '';
+
+    progW.style.display = 'none';
+    btn.disabled = false;
+    status.textContent = '✓ ZIP export complete (90 PNG frames)';
+  } catch(err) {
+    const errorMsg = err?.message || String(err) || 'Unknown error';
+    document.getElementById('status').textContent = `✗ Error: ${errorMsg}`;
+    document.getElementById('btn-png').disabled = false;
+    console.error('PNG export error:', err);
+    
+    // Restore animation state on error
+    document.querySelectorAll('.slice').forEach(el => {
+      el.style.animation = '';
+      el.style.transform = '';
+      el.style.opacity = '';
+    });
+    const mainG2 = document.getElementById('logo-main-g');
+    if (mainG2) {
+      mainG2.style.animation = '';
+      mainG2.style.transform = '';
+    }
+  }
+});
+
+// ── WebM Export ─────────────────────────────────────────────────
+document.getElementById('btn-webm').addEventListener('click', async () => {
+  const btn    = document.getElementById('btn-webm');
+  const status = document.getElementById('status');
+  const progW  = document.getElementById('prog-wrap');
+  const progB  = document.getElementById('prog-bar');
+  const canvas = document.getElementById('export-canvas');
+  const ctx    = canvas.getContext('2d');
+
+  const mimeType = ['video/webm;codecs=vp9','video/webm;codecs=vp8','video/webm']
+    .find(m => MediaRecorder.isTypeSupported(m));
+  if (!mimeType) {
+    status.textContent = '⚠ WebM not supported. Use Chrome. Try PNG sequence instead.';
+    return;
+  }
+
+  const SIZE   = 512;
+  const FPS    = 30;
+  const FRAMES = 90;
+  btn.disabled = true;
+  canvas.width = canvas.height = SIZE;
+  progW.style.display = 'block';
+
+  const stream   = canvas.captureStream(FPS);
+  const recorder = new MediaRecorder(stream, { mimeType, videoBitsPerSecond: 8_000_000 });
+  const chunks   = [];
+  recorder.ondataavailable = e => { if (e.data.size > 0) chunks.push(e.data); };
+  recorder.onstop = () => {
+    const blob = new Blob(chunks, { type: 'video/webm' });
+    const a    = document.createElement('a');
+    a.href     = URL.createObjectURL(blob);
+    a.download = 'Todd_Self_Promo_Assembly.webm';
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    progW.style.display = 'none';
+    btn.disabled = false;
+    status.textContent = '✓ WebM exported! Upload to MyWebAR.';
+  };
+
+  recorder.start();
+
+  const svgEl  = document.getElementById('logo-svg');
+  const mainG  = document.getElementById('logo-main-g');
+
+  function easeOutBack(x) {
+    const c1 = 1.70158, c3 = c1 + 1;
+    return 1 + c3*Math.pow(x-1,3) + c1*Math.pow(x-1,2);
+  }
+  function easeOut(x) { return 1 - Math.pow(1-x, 3); }
+
+  const sliceConfigs = [
+    ['A',0.00,0.7,'translate', 0,-85],['B',0.12,0.7,'translate',74,-43],
+    ['C',0.24,0.7,'translate',74, 43],['D',0.36,0.7,'translate', 0, 85],
+    ['E',0.48,0.7,'translate',-74,43],['F',0.60,0.7,'translate',-74,-43],
+    ['T',1.05,0.65,'scale',0,0],      ['Z',1.40,0.6,'scale',0,0],
+  ];
+
+  for (let i = 0; i < FRAMES; i++) {
+    const t = i / FPS;
+
+    sliceConfigs.forEach(([suffix, delay, dur, type, tx, ty]) => {
+      const els = document.querySelectorAll(`.slice-${suffix}`);
+      const elapsed = Math.max(0, t - delay);
+      const p  = Math.min(1, elapsed / dur);
+      const ep = type === 'scale' ? easeOutBack(p) : easeOut(p);
+      els.forEach(el => {
+        el.style.animation = 'none';
+        el.style.opacity   = p > 0 ? '1' : '0';
+        if (type === 'translate') {
+          el.style.transform = `translate(${tx*(1-ep)}px, ${ty*(1-ep)}px)`;
+        } else {
+          const startScale = suffix === 'T' ? 0.4 : 0.2;
+          el.style.transform = `scale(${startScale + (1-startScale)*Math.max(0,ep)})`;
+        }
+      });
+    });
+
+    const pulseP  = Math.min(1, Math.max(0, (t-2.15)/0.45));
+    const pulseSc = 1 + 0.045*Math.sin(pulseP*Math.PI);
+    mainG.style.animation = 'none';
+    mainG.style.transform = `scale(${pulseSc})`;
+
+    let svgStr = new XMLSerializer().serializeToString(svgEl)
+      .replace(/<svg /, '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" ');
+    const blob = new Blob([svgStr], { type: 'image/svg+xml' });
+    const url  = URL.createObjectURL(blob);
+
+    await new Promise(res => {
+      const img = new Image();
+      img.onload = () => {
+        ctx.clearRect(0, 0, SIZE, SIZE);
+        ctx.drawImage(img, 0, 0, SIZE, SIZE);
+        URL.revokeObjectURL(url);
+        res();
+      };
+      img.onerror = () => res();
+      img.src = url;
+    });
+
+    progB.style.width = `${Math.round((i+1)/FRAMES*100)}%`;
+    status.textContent = `Recording frame ${i+1} / ${FRAMES}...`;
+    await new Promise(r => setTimeout(r, 1000/FPS));
+  }
+
+  document.querySelectorAll('.slice').forEach(el => {
+    el.style.animation = el.style.transform = el.style.opacity = '';
+  });
+  mainG.style.animation = mainG.style.transform = '';
+  recorder.stop();
+});
+</script>
+</body>
+</html>

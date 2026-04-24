@@ -1,0 +1,65 @@
+---
+layout: default
+---
+<div class="project-page">
+  <div class="project-header">
+    <div class="container">
+      <a href="/#projects" class="back-link">Back to Portfolio</a>
+      <div class="project-header-inner">
+        <div>
+          <div class="project-page-num">Project {{ page.number }} / 08</div>
+          <h1 class="project-page-title">{{ page.title }}</h1>
+          <p style="color:var(--text-body);max-width:640px;">{{ page.concept }}</p>
+          <div class="project-meta-bar">
+            {% for tag in page.tags %}
+              <span class="badge">{{ tag }}</span>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" style="padding-bottom:5rem;">
+    <div class="project-body">
+
+      {% if page.impact %}
+      <div class="impact-highlight">
+        <p>{{ page.impact }}</p>
+      </div>
+      {% endif %}
+
+      <div class="project-section">
+        <h3>Project Concept</h3>
+        {{ content }}
+      </div>
+
+      {% if page.software %}
+      <div class="project-section">
+        <h3>Software & Tools Used</h3>
+        <ul class="software-list">
+          {% for s in page.software %}
+            <li>{{ s }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+      {% if page.skills %}
+      <div class="project-section">
+        <h3>Skills Demonstrated</h3>
+        <ul class="skills-attained">
+          {% for skill in page.skills %}
+            <li>{{ skill }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+
+    </div>
+
+    <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);">
+      <a href="/#projects" class="btn btn-ghost">← All Projects</a>
+    </div>
+  </div>
+</div>

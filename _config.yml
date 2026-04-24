@@ -1,0 +1,31 @@
+title: Todd R. Hardeman
+tagline: Principal Systems & Solutions Architect
+description: Portfolio of Todd R. Hardeman — Operations Project Manager, Systems Architect, Innovation Strategy Lead
+url: ""
+baseurl: ""
+
+author:
+  name: Todd R. Hardeman
+  title: Principal Systems & Solutions Architect
+  location: Travis AFB, CA
+  email: todd.hardeman@us.af.mil
+  phone: 559-553-5761
+  clearance: Secret
+  rank: Technical Sergeant (June 2026)
+  linkedin: ""
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+
+markdown: kramdown
+plugins:
+  - jekyll-feed
