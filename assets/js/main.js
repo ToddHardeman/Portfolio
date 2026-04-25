@@ -57,17 +57,19 @@ function updateLogoAnimation() {
   const scrollProgress = Math.min(scrolled / maxScrollTrigger, 1); // 0 to 1
   
   // Send scroll progress to logo iframe
-  const logoIframe = document.querySelector('.animated-logo-iframe');
-  if (logoIframe && logoIframe.contentWindow) {
-    try {
-      logoIframe.contentWindow.postMessage(
-        { scrollProgress: scrollProgress },
-        '*'
-      );
-    } catch (e) {
-      console.error('Error sending scroll to logo iframe:', e);
+  const logoIframes = document.querySelectorAll('.animated-logo-iframe');
+  logoIframes.forEach((logoIframe) => {
+    if (logoIframe && logoIframe.contentWindow) {
+      try {
+        logoIframe.contentWindow.postMessage(
+          { scrollProgress: scrollProgress },
+          '*'
+        );
+      } catch (e) {
+        console.error('Error sending scroll to logo iframe:', e);
+      }
     }
-  }
+  });
 }
 
 window.addEventListener('scroll', updateLogoAnimation, { passive: true });

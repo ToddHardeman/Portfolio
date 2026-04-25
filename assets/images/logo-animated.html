@@ -895,12 +895,12 @@ function easeOutQuint(t) {
 window.addEventListener('message', (event) => {
   if (event.data && typeof event.data.scrollProgress === 'number') {
     scrollProgress = event.data.scrollProgress;
-    updateLogoAnimation();
+    updateSlicesFromScroll(scrollProgress);
   }
 });
 
 // Initial animation run on load
-updateLogoAnimation();
+updateSlicesFromScroll(scrollProgress);
 </script>
 </body>
 </html>
