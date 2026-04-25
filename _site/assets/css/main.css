@@ -97,7 +97,7 @@ body::after {
   border: none;
   pointer-events: none;
   z-index: 1;
-  opacity: 0.2;
+  opacity: 0.08;
 }
 
 /* Scroll Reveal Animations */
