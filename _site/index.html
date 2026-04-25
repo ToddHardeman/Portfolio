@@ -1,8 +1,50 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todd R. Hardeman — Principal Systems & Solutions Architect</title>
+  <meta name="description" content="Portfolio of Todd R. Hardeman — Operations Project Manager, Systems Architect, Innovation Strategy Lead" />
 
-<!-- ═══════════════════════════════════════════════════════
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/assets/css/main.css" />
+
+  <!-- Favicon (logo as favicon) -->
+  <link rel="icon" type="image/png" href="/assets/images/logo.png" />
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <nav class="site-nav">
+  <div class="nav-inner">
+    <a href="https://toddhardeman.github.io/Portfolio/" class="nav-logo">
+      <img src="/assets/images/logo.png" alt="Todd Hardeman Logo" />
+      <span>Todd R. <em>Hardeman</em></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+
+  <main id="main">
+    <!-- ═══════════════════════════════════════════════════════
      HERO SECTION
 ════════════════════════════════════════════════════════ -->
 <section class="hero" id="home">
@@ -41,7 +83,7 @@ layout: default
           <span class="corner-bracket br"></span>
           <iframe
             class="animated-logo-iframe"
-            src="{{ '/assets/images/logo-animated.html' | relative_url }}"
+            src="/assets/images/logo-animated.html"
             title="Todd Hardeman Animated Logo"
             scrolling="no"
             sandbox="allow-scripts allow-same-origin"
@@ -139,29 +181,224 @@ layout: default
 
     <div class="projects-container">
       <div class="projects-track">
-        {% assign sorted_projects = site.projects | sort: "number" %}
-        {% for project in sorted_projects %}
-        <a href="{{ project.url | relative_url }}" class="project-card reveal">
+        
+        
+        <a href="/projects/p1-laircm-plug/" class="project-card reveal">
           <div class="card-header">
-            <h3 class="card-title">{{ project.title }}</h3>
-            <span class="card-num">P{{ project.number }}</span>
+            <h3 class="card-title">LAIRCM Inlet/Exhaust Port Plug</h3>
+            <span class="card-num">P1</span>
           </div>
           <div class="card-body">
-            <p class="card-desc">{{ project.summary }}</p>
-            {% if project.impact_short %}
-            <div class="card-impact">{{ project.impact_short }}</div>
-            {% endif %}
+            <p class="card-desc">Engineered a $25 hardware solution to prevent water ingress in KC-46 infrared countermeasures systems — replacing $887K per-occurrence failures with near-zero cost prevention.</p>
+            
+            <div class="card-impact">$116M projected annual savings · 370K man-hours recovered annually</div>
+            
             <div class="card-tags">
-              {% for tag in project.tags limit:4 %}
-                <span class="tag">{{ tag }}</span>
-              {% endfor %}
+              
+                <span class="tag">Hardware Engineering</span>
+              
+                <span class="tag">CAD / 3D Print</span>
+              
+                <span class="tag">Cost Avoidance</span>
+              
+                <span class="tag">Aviation Systems</span>
+              
             </div>
           </div>
           <div class="card-footer">
             <span class="card-arrow">View Details →</span>
           </div>
         </a>
-        {% endfor %}
+        
+        <a href="/projects/p2-mission-ready/" class="project-card reveal">
+          <div class="card-header">
+            <h3 class="card-title">Mission Ready: Aviation Operations Dashboard</h3>
+            <span class="card-num">P2</span>
+          </div>
+          <div class="card-body">
+            <p class="card-desc">Designed and began development of a full-stack web application for aviation operations — providing real-time aircraft readiness visibility, maintenance tracking, and data management via intuitive UI/UX.</p>
+            
+            <div class="card-impact">Real-time readiness visibility · Reduced manual reporting · Commander-focused design</div>
+            
+            <div class="card-tags">
+              
+                <span class="tag">Full-Stack Dev</span>
+              
+                <span class="tag">UI/UX Design</span>
+              
+                <span class="tag">React / Figma</span>
+              
+                <span class="tag">Aviation Ops</span>
+              
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="card-arrow">View Details →</span>
+          </div>
+        </a>
+        
+        <a href="/projects/p3-uas-inspection/" class="project-card reveal">
+          <div class="card-header">
+            <h3 class="card-title">UAS C-17 Inspection Innovation</h3>
+            <span class="card-num">P3</span>
+          </div>
+          <div class="card-body">
+            <p class="card-desc">Pioneered the first Unmanned Aerial System inspection methodology for the C-17 Globemaster III — reducing inspection duration by 92% and establishing an enterprise-wide automated maintenance precedent.</p>
+            
+            <div class="card-impact">92% inspection time reduction · Enterprise-wide automated maintenance precedent</div>
+            
+            <div class="card-tags">
+              
+                <span class="tag">UAS / Drone Tech</span>
+              
+                <span class="tag">Automation</span>
+              
+                <span class="tag">Process Innovation</span>
+              
+                <span class="tag">Aviation Safety</span>
+              
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="card-arrow">View Details →</span>
+          </div>
+        </a>
+        
+        <a href="/projects/p4-knowledge-platform/" class="project-card reveal">
+          <div class="card-header">
+            <h3 class="card-title">Enterprise Global Knowledge-Sharing Platform</h3>
+            <span class="card-num">P4</span>
+          </div>
+          <div class="card-body">
+            <p class="card-desc">Engineered and implemented a global knowledge-sharing platform utilized by 10 Major Commands and 100 installations — standardizing professional development across 10,000+ personnel.</p>
+            
+            <div class="card-impact">10 Major Commands · 100 installations · 10K+ members connected</div>
+            
+            <div class="card-tags">
+              
+                <span class="tag">Knowledge Management</span>
+              
+                <span class="tag">Enterprise Systems</span>
+              
+                <span class="tag">M365 Platform</span>
+              
+                <span class="tag">Organizational Dev</span>
+              
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="card-arrow">View Details →</span>
+          </div>
+        </a>
+        
+        <a href="/projects/p5-intake-app/" class="project-card reveal">
+          <div class="card-header">
+            <h3 class="card-title">Intake Application for Administrative Modernization</h3>
+            <span class="card-num">P5</span>
+          </div>
+          <div class="card-body">
+            <p class="card-desc">Co-developed and deployed a custom Power Apps intake application that modernized administrative workflows — automating high-volume request processing and eliminating manual data entry bottlenecks.</p>
+            
+            <div class="card-impact">Automated enterprise administrative intake · Eliminated manual processing bottlenecks</div>
+            
+            <div class="card-tags">
+              
+                <span class="tag">Power Platform</span>
+              
+                <span class="tag">Low-Code Dev</span>
+              
+                <span class="tag">Process Automation</span>
+              
+                <span class="tag">Digital Transformation</span>
+              
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="card-arrow">View Details →</span>
+          </div>
+        </a>
+        
+        <a href="/projects/p6-task-tracker/" class="project-card reveal">
+          <div class="card-header">
+            <h3 class="card-title">Digital Task Tracking Application</h3>
+            <span class="card-num">P6</span>
+          </div>
+          <div class="card-body">
+            <p class="card-desc">Co-developed and deployed a digital task tracking application for military and academic institutions — eliminating training backlogs and streamlining inter-organizational workflow management.</p>
+            
+            <div class="card-impact">Training backlogs eliminated · Cross-organizational task visibility achieved</div>
+            
+            <div class="card-tags">
+              
+                <span class="tag">Power Platform</span>
+              
+                <span class="tag">Task Management</span>
+              
+                <span class="tag">Military-Academic</span>
+              
+                <span class="tag">Workflow Automation</span>
+              
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="card-arrow">View Details →</span>
+          </div>
+        </a>
+        
+        <a href="/projects/p7-automated-reporting/" class="project-card reveal">
+          <div class="card-header">
+            <h3 class="card-title">Automated Reporting System for 18th Air Force</h3>
+            <span class="card-num">P7</span>
+          </div>
+          <div class="card-body">
+            <p class="card-desc">Engineered an automated reporting system that increased data accuracy for 18 Air Force general officers — filling a commissioned officer-level senior leadership vacancy through technical innovation.</p>
+            
+            <div class="card-impact">Served 18 AF General Officers · Filled commissioned officer-level vacancy through automation</div>
+            
+            <div class="card-tags">
+              
+                <span class="tag">Power Platform</span>
+              
+                <span class="tag">Business Intelligence</span>
+              
+                <span class="tag">Strategic Leadership</span>
+              
+                <span class="tag">Automation</span>
+              
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="card-arrow">View Details →</span>
+          </div>
+        </a>
+        
+        <a href="/projects/p8-counter-terrorism/" class="project-card reveal">
+          <div class="card-header">
+            <h3 class="card-title">Strategic Project Management & Counter-Terrorism Support</h3>
+            <span class="card-num">P8</span>
+          </div>
+          <div class="card-body">
+            <p class="card-desc">Managed and synchronized large-scale technical logistics and global connectivity assets for national-level strategic directives — providing critical intelligence support that directly contributed to the interdiction of a narco-terrorist network.</p>
+            
+            <div class="card-impact">Narco-terrorist network interdiction · National security objectives achieved · Life-saving operational outcomes</div>
+            
+            <div class="card-tags">
+              
+                <span class="tag">Strategic Ops</span>
+              
+                <span class="tag">Secure Networking</span>
+              
+                <span class="tag">Inter-Agency</span>
+              
+                <span class="tag">Counter-Terrorism</span>
+              
+            </div>
+          </div>
+          <div class="card-footer">
+            <span class="card-arrow">View Details →</span>
+          </div>
+        </a>
+        
       </div>
     </div>
   </div>
@@ -403,10 +640,10 @@ layout: default
           Full resume, official biography, and additional materials available upon request.
         </p>
         <div style="display:flex;flex-direction:column;gap:0.8rem;">
-          <a href="{{ '/assets/docs/Todd_Hardeman_Resume_2026.pdf' | relative_url }}" class="btn btn-primary" download>
+          <a href="/assets/docs/Todd_Hardeman_Resume_2026.pdf" class="btn btn-primary" download>
             ↓ Download Resume (2026)
           </a>
-          <a href="{{ '/assets/docs/Official_Bio_SSgt_Hardeman.pdf' | relative_url }}" class="btn btn-ghost" download>
+          <a href="/assets/docs/Official_Bio_SSgt_Hardeman.pdf" class="btn btn-ghost" download>
             ↓ Official USAF Biography
           </a>
         </div>
@@ -420,3 +657,21 @@ layout: default
     </div>
   </div>
 </section>
+
+  </main>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <span class="footer-copy">© 2026 Todd R. Hardeman · Principal Systems & Solutions Architect · All rights reserved.</span>
+    <ul class="footer-links">
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#projects">Projects</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+
+
+  <script src="/assets/js/main.js" defer></script>
+</body>
+</html>
