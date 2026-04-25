@@ -1,21 +1,21 @@
-# Todd R. Hardeman — Personal Portfolio
+# My Portfolio
 
-A Jekyll-based personal portfolio site matching the dark tech aesthetic of your existing branding (business card, letterhead, and animated logo).
+This is my personal portfolio site—a Jekyll-based portfolio built to match my dark tech aesthetic across all my branding (business card, letterhead, and animated logo).
 
 ---
 
 ## 🎨 Design System
 
-**Color Palette** (matches your card/letterhead)
+**My Color Palette** (consistent across all materials)
 - `#0a1118` — Deep background
-- `#4ecdc4` — Teal accent (primary brand color)
+- `#4ecdc4` — Teal accent (my primary brand)
 - `#9ea4a9` — Silver (secondary)
 - `#0e1a24` — Panel background
 
-**Fonts** (loaded from Google Fonts)
-- `Rajdhani` — Display/headings
+**Fonts** (from Google Fonts)
+- `Rajdhani` — Display & headings
 - `Exo 2` — Body text
-- `Share Tech Mono` — Monospace/labels
+- `Share Tech Mono` — Monospace & labels
 
 ---
 
@@ -29,7 +29,7 @@ A Jekyll-based personal portfolio site matching the dark tech aesthetic of your 
 
 ```bash
 # 1. Navigate to the portfolio folder
-cd hardeman-portfolio
+cd Portfolio
 
 # 2. Install gems
 bundle install
@@ -45,23 +45,23 @@ open http://localhost:4000
 
 ```bash
 bundle exec jekyll build
-# Output in the _site/ folder — deploy this folder
+# Output in the _site/ folder—ready to deploy
 ```
 
 ---
 
-## 📁 Project Structure
+## 📁 Site Structure
 
 ```
-hardeman-portfolio/
+Portfolio/
 ├── _config.yml              # Site configuration
 ├── _layouts/
 │   ├── default.html         # Main page wrapper (nav, fonts, footer)
-│   └── project.html         # Individual project page layout
+│   └── project.html         # Individual project detail layout
 ├── _includes/
 │   ├── nav.html             # Fixed navigation bar
 │   └── footer.html          # Site footer
-├── _projects/               # Project markdown files (P1–P8)
+├── _projects/               # My project files (P1–P8)
 │   ├── p1-laircm-plug.md
 │   ├── p2-mission-ready.md
 │   ├── p3-uas-inspection.md
@@ -74,8 +74,8 @@ hardeman-portfolio/
 │   ├── css/main.css         # All styles (CSS variables, components)
 │   ├── js/main.js           # Nav, scroll reveal, typewriter
 │   ├── images/
-│   │   ├── logo.png             # Your hexagon logo (static)
-│   │   └── logo-animated.html   # Your animated logo assembly
+│   │   ├── logo.png             # My hexagon logo (static)
+│   │   └── logo-animated.html   # My animated logo assembly
 │   └── docs/
 │       ├── Todd_Hardeman_Resume_2026.pdf
 │       └── Official_Bio_SSgt_Hardeman.pdf
@@ -86,22 +86,22 @@ hardeman-portfolio/
 
 ---
 
-## ✏️ How to Edit Content
+## ✏️ Editing My Content
 
-### Update Your Bio / About Section
-Edit the text directly in `index.html` — find the `#about` section.
+### Update My Bio & About Section
+I can edit the text directly in `index.html` — look for the `#about` section.
 
 ### Add or Edit a Project
-Each project is a Markdown file in `_projects/`. Front matter controls everything shown on the card and detail page:
+Each project is a Markdown file in `_projects/`. The front matter controls how it displays on the card and detail page:
 
 ```yaml
 ---
-title: "Your Project Title"
+title: "Project Title"
 number: 9              # Determines sort order (P09)
 summary: "..."         # Shown on the project card
-concept: "..."         # Header description on detail page
-impact: "..."          # Bold impact statement (detail page)
-impact_short: "..."    # One-liner shown on project card
+concept: "..."         # Header on detail page
+impact: "..."          # Bold impact statement
+impact_short: "..."    # One-liner on project card
 software:
   - "Tool Name (Purpose)"
 skills:
@@ -110,47 +110,47 @@ tags:
   - "Tag"
 ---
 
-Your project body text goes here as markdown.
+Project description goes here as markdown.
 ```
 
-### Update Contact Info
-Edit the `#contact` section in `index.html`.
+### Update My Contact Info
+I can edit the `#contact` section in `index.html`.
 
-### Update Stats
-Edit the `.stat-card` blocks in the `#about` section of `index.html`.
+### Update My Stats
+I can edit the `.stat-card` blocks in the `#about` section of `index.html`.
 
 ---
 
-## 🌐 Deploying
+## 🌐 Deploying My Site
 
 ### GitHub Pages (Free)
-1. Push to a GitHub repo
+1. Push to GitHub
 2. Go to Settings → Pages → Source: `main` branch / `/(root)`
-3. Your site will be live at `https://yourusername.github.io/repo-name`
+3. My site will go live at `https://toddrhardeman.github.io/Portfolio`
 
-Note: In `_config.yml`, set `baseurl: "/repo-name"` if deploying to a subfolder.
+Note: In `_config.yml`, I can set `baseurl: "/Portfolio"` if needed for the subfolder.
 
 ### Netlify (Free, Recommended)
-1. Connect your GitHub repo to Netlify
+1. Connect my GitHub repo to Netlify
 2. Build command: `bundle exec jekyll build`
 3. Publish directory: `_site`
-4. Deploys automatically on every commit
+4. It deploys automatically on every commit
 
 ### Custom Domain
-If you have a domain, add a `CNAME` file to the root with your domain:
+With a custom domain, I can add a `CNAME` file to the root with my domain:
 ```
 todd.hardeman.io
 ```
 
 ---
 
-## 🔮 Animated Logo — Jekyll Integration
+## 🔮 My Animated Logo — Jekyll Integration
 
-Your animated logo (`logo-animated.html`) is embedded via an `<iframe>` in the hero section. This is the recommended approach for Jekyll because:
+My animated logo (`logo-animated.html`) is embedded via an `<iframe>` in the hero section. This works best for Jekyll because:
 
 - The logo uses complex SVG animations with CSS `@keyframes`
 - Embedding directly in Liquid templates can cause parsing conflicts
-- An iframe preserves the self-contained animation context perfectly
+- An iframe preserves the animation context perfectly
 
 The iframe is already configured in `index.html`:
 ```html
@@ -163,14 +163,14 @@ The iframe is already configured in `index.html`:
 ></iframe>
 ```
 
-If you want the logo transparent (no background), edit `logo-animated.html` and remove or comment out the `body::before` checkerboard CSS block.
+If I want the logo transparent (no background), I can edit `logo-animated.html` and remove or comment out the `body::before` checkerboard CSS block.
 
 ---
 
 ## 🎯 Customization Tips
 
-**Change accent color:** Edit `--teal` in `assets/css/main.css` `:root`
+**Change my accent color:** Edit `--teal` in `assets/css/main.css` `:root`
 
-**Add a new section:** Copy an existing `<section>` block in `index.html`, update the ID and nav link in `_includes/nav.html`
+**Add a new section:** Copy an existing `<section>` block in `index.html`, update the ID, and add a link in `_includes/nav.html`
 
-**Add project images:** Add `image: /assets/images/your-image.jpg` to project front matter and reference in `_layouts/project.html`
+**Add project images:** Add `image: /assets/images/my-image.jpg` to project front matter and reference it in `_layouts/project.html`
