@@ -50,7 +50,7 @@ if (typeTarget) {
 }
 
 // ─── SCROLL-DRIVEN LOGO BUILD ANIMATION ──────────────────────
-const maxScrollTrigger = 6000; // Scroll distance for full logo build
+const maxScrollTrigger = 5000; // Scroll distance for full logo build
 
 function updateLogoAnimation() {
   const scrolled = window.scrollY;
