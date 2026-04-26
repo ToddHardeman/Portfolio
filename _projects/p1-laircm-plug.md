@@ -9,8 +9,6 @@ image: /assets/images/projects/p1-laircm-plug.jpg
 docs:
   - label: "LAIRCM White Paper"
     path: /assets/docs/laircm-whitepaper.pdf
-  - label: "Field Test Report"
-    path: /assets/docs/laircm-field-test.pdf
 software:
   - "Fusion 360 (CAD Design & Iteration)"
   - "Prusa Slicer (3D Print Preparation)"
