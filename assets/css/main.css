@@ -600,7 +600,7 @@ section#contact::before {
   align-items: start;
 }
 
-@media (max-width: 860px) {
+@media (max-width: 768px) {
   .project-layout {
     grid-template-columns: 1fr;
   }
