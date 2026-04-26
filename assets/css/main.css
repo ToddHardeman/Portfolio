@@ -738,3 +738,41 @@ section#contact::before {
   border-top: 1px solid var(--border);
   padding-top: 2rem;
 }
+/* ── PROJECT DETAIL TYPOGRAPHY IMPROVEMENTS ─────────────── */
+.project-page-title {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  margin-bottom: 1rem;
+}
+
+.project-main .project-section h3 {
+  font-family: var(--font-display);  /* switch from mono to display */
+  font-size: 1rem;                   /* bigger than the 0.7rem before */
+  letter-spacing: 0.12em;
+  color: var(--white);               /* white instead of teal */
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(78,205,196,0.3); /* teal underline accent */
+}
+
+.impact-highlight p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--white);
+}
+
+.project-concept-text,
+.project-content p {
+  font-size: 1rem;      /* up from default */
+  line-height: 1.85;
+  color: rgba(237,242,248,0.82);  /* slightly brighter than --muted */
+}
+
+.sidebar-label {
+  font-size: 0.72rem;  /* slightly bigger than 0.65rem */
+}
+
+.sidebar-impact p,
+.sidebar-meta-row {
+  font-size: 0.9rem;   /* up from 0.85/0.8rem */
+}
