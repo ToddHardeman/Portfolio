@@ -8,7 +8,7 @@ impact_short: "$116M projected annual savings · 370K man-hours recovered annual
 image: /assets/images/projects/p1-laircm-plug.jpg
 docs:
   - label: "LAIRCM White Paper"
-    path: /assets/docs/laircm-whitepaper.pdf
+    path: /assets/docs/LAIRCM_Plug_White_Paper.pdf
 software:
   - "Fusion 360 (CAD Design & Iteration)"
   - "Prusa Slicer (3D Print Preparation)"
