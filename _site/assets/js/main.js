@@ -54,7 +54,7 @@ const maxScrollTrigger = 4000; // Scroll distance for full logo build
 
 function updateLogoAnimation() {
   const scrolled = window.scrollY;
-  const scrollProgress = Math.min(scrolled / maxScrollTrigger, 1); // 0 to 1
+  const scrollProgress = Math.min(scrolled / maxScrollTrigger, .8); // 0 to 1
   
   // Send scroll progress to logo iframe
   const logoIframes = document.querySelectorAll('.animated-logo-iframe');
