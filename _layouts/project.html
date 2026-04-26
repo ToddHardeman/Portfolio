@@ -2,26 +2,26 @@
 layout: default
 ---
 <div class="project-page">
+
+  <!-- ── HEADER ─────────────────────────────────────────── -->
   <div class="project-header">
     <div class="container">
-      <a href="{{ '/' | relative_url }}#projects" class="back-link">Back to Portfolio</a>
-      <div class="project-header-inner">
-        <div>
-          <div class="project-page-num">Project {{ page.number }} / 08</div>
-          <h1 class="project-page-title">{{ page.title }}</h1>
-          <p style="color:var(--text-body);max-width:640px;">{{ page.concept }}</p>
-          <div class="project-meta-bar">
-            {% for tag in page.tags %}
-              <span class="badge">{{ tag }}</span>
-            {% endfor %}
-          </div>
-        </div>
+      <a href="{{ '/' | relative_url }}#projects" class="back-link">← All Projects</a>
+      <div class="project-num-label">Project {{ page.number }} / 08</div>
+      <h1 class="project-page-title">{{ page.title }}</h1>
+      <div class="project-meta-bar">
+        {% for tag in page.tags %}
+          <span class="badge">{{ tag }}</span>
+        {% endfor %}
       </div>
     </div>
   </div>
 
-  <div class="container" style="padding-bottom:5rem;">
-    <div class="project-body">
+  <!-- ── BODY ───────────────────────────────────────────── -->
+  <div class="container project-layout">
+
+    <!-- LEFT: main content -->
+    <div class="project-main">
 
       {% if page.impact %}
       <div class="impact-highlight">
@@ -31,35 +31,85 @@ layout: default
 
       <div class="project-section">
         <h3>Project Concept</h3>
-        {{ content }}
+        <p class="project-concept-text">{{ page.concept }}</p>
+      </div>
+
+      <div class="project-section">
+        <h3>Overview</h3>
+        <div class="project-content">{{ content }}</div>
       </div>
 
       {% if page.software %}
       <div class="project-section">
-        <h3>Software & Tools Used</h3>
-        <ul class="software-list">
+        <h3>Software &amp; Tools</h3>
+        <div class="tag-cloud">
           {% for s in page.software %}
-            <li>{{ s }}</li>
+            <span class="tag-pill">{{ s }}</span>
           {% endfor %}
-        </ul>
+        </div>
       </div>
       {% endif %}
 
       {% if page.skills %}
       <div class="project-section">
         <h3>Skills Demonstrated</h3>
-        <ul class="skills-attained">
+        <div class="tag-cloud">
           {% for skill in page.skills %}
-            <li>{{ skill }}</li>
+            <span class="tag-pill tag-pill--skill">{{ skill }}</span>
           {% endfor %}
-        </ul>
+        </div>
       </div>
       {% endif %}
 
     </div>
 
-    <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);">
-      <a href="{{ '/' | relative_url }}#projects" class="btn btn-ghost">← All Projects</a>
-    </div>
+    <!-- RIGHT: sidebar -->
+    <aside class="project-sidebar">
+
+      {% if page.image %}
+      <div class="sidebar-card sidebar-thumbnail">
+        <img src="{{ page.image | relative_url }}" alt="{{ page.title }} thumbnail" />
+      </div>
+      {% endif %}
+
+      {% if page.impact_short %}
+      <div class="sidebar-card sidebar-impact">
+        <div class="sidebar-label">Key Impact</div>
+        <p>{{ page.impact_short }}</p>
+      </div>
+      {% endif %}
+
+      {% if page.docs %}
+      <div class="sidebar-card sidebar-docs">
+        <div class="sidebar-label">Documents</div>
+        {% for doc in page.docs %}
+          <a href="{{ doc.path | relative_url }}" class="doc-download-btn" download>
+            <span class="doc-icon">↓</span>
+            {{ doc.label }}
+          </a>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <div class="sidebar-card sidebar-meta">
+        <div class="sidebar-label">Project</div>
+        <div class="sidebar-meta-row">
+          <span class="sidebar-meta-key">Number</span>
+          <span>P0{{ page.number }}</span>
+        </div>
+        {% if page.tags %}
+        <div class="sidebar-meta-row">
+          <span class="sidebar-meta-key">Tags</span>
+          <span>{{ page.tags | join: ", " }}</span>
+        </div>
+        {% endif %}
+      </div>
+
+    </aside>
   </div>
+
+  <div class="container project-footer">
+    <a href="{{ '/' | relative_url }}#projects" class="btn btn-ghost">← All Projects</a>
+  </div>
+
 </div>
