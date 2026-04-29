@@ -5,7 +5,7 @@ summary: "Designed and began development of a full-stack web application for avi
 concept: "Mission Ready is a full-stack web application designed to serve as an aviation operations dashboard. The project aims to enhance aircraft maintenance tracking, provide real-time readiness visibility, and streamline data management — replacing fragmented manual processes with an integrated, commander-focused interface."
 impact: "Aims to eliminate manual reporting errors, provide commanders with real-time operational readiness data, and reduce data entry overhead across maintenance operations"
 impact_short: "Real-time readiness visibility · Reduced manual reporting · Commander-focused design"
-image: assets/images/projects/p2-MissionReadyDashboard
+image: assets/images/projects/p2-MissionReadyDashboard.png
 software:
   - "Figma (UI/UX Design, Wireframing & Prototyping)"
   - "JavaScript (Front-End Logic)"
