@@ -123,32 +123,57 @@ layout: default
       <p class="section-sub">Eight high-impact initiatives spanning engineering, software, and strategic operations</p>
     </div>
 
-    <div class="projects-container">
-      <div class="projects-track">
-        {% assign sorted_projects = site.projects | sort: "number" %}
-        {% for project in sorted_projects %}
-        <a href="{{ project.url | relative_url }}" class="project-card reveal">
-          <div class="card-header">
-            <h3 class="card-title">{{ project.title }}</h3>
-            <span class="card-num">P{{ project.number }}</span>
-          </div>
-          <div class="card-body">
-            <p class="card-desc">{{ project.summary }}</p>
-            {% if project.impact_short %}
-            <div class="card-impact">{{ project.impact_short }}</div>
-            {% endif %}
-            <div class="card-tags">
-              {% for tag in project.tags limit:4 %}
-                <span class="tag">{{ tag }}</span>
-              {% endfor %}
+    <div class="projects-carousel-wrapper">
+      <button class="projects-nav projects-nav-prev" aria-label="Previous project">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M15 18l-6-6 6-6"/>
+        </svg>
+      </button>
+
+      <div class="projects-container">
+        <div class="projects-track">
+          {% assign sorted_projects = site.projects | sort: "number" %}
+          {% for project in sorted_projects %}
+          <a href="{{ project.url | relative_url }}" class="project-card reveal">
+            <div class="card-header">
+              <h3 class="card-title">{{ project.title }}</h3>
+              <span class="card-num">P{{ project.number }}</span>
             </div>
-          </div>
-          <div class="card-footer">
-            <span class="card-arrow">View Details →</span>
-          </div>
-        </a>
-        {% endfor %}
+            <div class="card-body">
+              <p class="card-desc">{{ project.summary }}</p>
+              {% if project.impact_short %}
+              <div class="card-impact">{{ project.impact_short }}</div>
+              {% endif %}
+              <div class="card-tags">
+                {% for tag in project.tags limit:4 %}
+                  <span class="tag">{{ tag }}</span>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="card-footer">
+              <span class="card-arrow">View Details →</span>
+            </div>
+          </a>
+          {% endfor %}
+        </div>
       </div>
+
+      <button class="projects-nav projects-nav-next" aria-label="Next project">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 18l6-6-6-6"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="projects-dots">
+      <button class="projects-dot active" data-index="0" aria-label="Go to project 1"></button>
+      <button class="projects-dot" data-index="1" aria-label="Go to project 2"></button>
+      <button class="projects-dot" data-index="2" aria-label="Go to project 3"></button>
+      <button class="projects-dot" data-index="3" aria-label="Go to project 4"></button>
+      <button class="projects-dot" data-index="4" aria-label="Go to project 5"></button>
+      <button class="projects-dot" data-index="5" aria-label="Go to project 6"></button>
+      <button class="projects-dot" data-index="6" aria-label="Go to project 7"></button>
+      <button class="projects-dot" data-index="7" aria-label="Go to project 8"></button>
     </div>
   </div>
 </section>
@@ -165,90 +190,115 @@ layout: default
       <p class="section-sub">A rare combination of military operations, systems engineering, and software development</p>
     </div>
 
-    <div class="skills-grid">
-      <div class="skill-category reveal">
-        <div class="skill-cat-title">Leadership & Management</div>
-        <ul class="skill-list">
-          <li>Project Lifecycle Management</li>
-          <li>Team Leadership & Mentoring</li>
-          <li>Strategic Planning</li>
-          <li>Resource Management</li>
-          <li>Organizational Development</li>
-          <li>Process Improvement</li>
-          <li>Root Cause Analysis</li>
-          <li>Agile Micro-Team Leadership</li>
-        </ul>
+    <div class="skills-carousel-wrapper">
+      <button class="skills-nav skills-nav-prev" aria-label="Previous skills">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M15 18l-6-6 6-6"/>
+        </svg>
+      </button>
+
+      <div class="skills-container">
+        <div class="skills-track">
+          <div class="skill-category reveal">
+            <div class="skill-cat-title">Leadership & Management</div>
+            <ul class="skill-list">
+              <li>Project Lifecycle Management</li>
+              <li>Team Leadership & Mentoring</li>
+              <li>Strategic Planning</li>
+              <li>Resource Management</li>
+              <li>Organizational Development</li>
+              <li>Process Improvement</li>
+              <li>Root Cause Analysis</li>
+              <li>Agile Micro-Team Leadership</li>
+            </ul>
+          </div>
+
+          <div class="skill-category reveal">
+            <div class="skill-cat-title">Software Development</div>
+            <ul class="skill-list">
+              <li>Full-Stack Development</li>
+              <li>JavaScript / React / Vite</li>
+              <li>MS Power Platform</li>
+              <li>Power Apps</li>
+              <li>Power Automate</li>
+              <li>Git / GitHub</li>
+              <li>UI/UX Design (Figma)</li>
+              <li>AI/ML Engineering</li>
+            </ul>
+          </div>
+
+          <div class="skill-category reveal">
+            <div class="skill-cat-title">Systems & Networking</div>
+            <ul class="skill-list">
+              <li>Enterprise Networking</li>
+              <li>Classified/Unclassified Systems</li>
+              <li>Secure Data-Link Architecture</li>
+              <li>Link-16 Operations</li>
+              <li>Hardware/Software Integration</li>
+              <li>Systems Troubleshooting</li>
+              <li>FCC GROL Licensed</li>
+              <li>COMPTIA Security+ (In Progress)</li>
+            </ul>
+          </div>
+
+          <div class="skill-category reveal">
+            <div class="skill-cat-title">Aviation & Operations</div>
+            <ul class="skill-list">
+              <li>KC-10 / KC-46 Avionics</li>
+              <li>Safety Investigation Boards</li>
+              <li>Technical Investigation</li>
+              <li>Telemetry Data Analysis</li>
+              <li>Fleet Resource Management</li>
+              <li>CAD / 3D Printing (Fusion 360)</li>
+              <li>UAS / Drone Operations</li>
+              <li>Expeditionary Operations</li>
+            </ul>
+          </div>
+
+          <div class="skill-category reveal">
+            <div class="skill-cat-title">Engineering & Innovation</div>
+            <ul class="skill-list">
+              <li>Hardware Design & Prototyping</li>
+              <li>Additive Manufacturing</li>
+              <li>Material Science (ASA, Silicone)</li>
+              <li>Cost-Benefit Analysis</li>
+              <li>Digital Transformation</li>
+              <li>Automation Strategy</li>
+              <li>Knowledge Management</li>
+              <li>Enterprise System Design</li>
+            </ul>
+          </div>
+
+          <div class="skill-category reveal">
+            <div class="skill-cat-title">Communication & Coordination</div>
+            <ul class="skill-list">
+              <li>Executive Briefings</li>
+              <li>Stakeholder Liaison</li>
+              <li>Technical Documentation</li>
+              <li>Inter-Agency Coordination</li>
+              <li>Military-Academic Partnerships</li>
+              <li>Secure Communications</li>
+              <li>Training Program Design</li>
+              <li>Compliance Management</li>
+            </ul>
+          </div>
+        </div>
       </div>
 
-      <div class="skill-category reveal">
-        <div class="skill-cat-title">Software Development</div>
-        <ul class="skill-list">
-          <li>Full-Stack Development</li>
-          <li>JavaScript / React / Vite</li>
-          <li>MS Power Platform</li>
-          <li>Power Apps</li>
-          <li>Power Automate</li>
-          <li>Git / GitHub</li>
-          <li>UI/UX Design (Figma)</li>
-          <li>AI/ML Engineering</li>
-        </ul>
-      </div>
+      <button class="skills-nav skills-nav-next" aria-label="Next skills">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 18l6-6-6-6"/>
+        </svg>
+      </button>
+    </div>
 
-      <div class="skill-category reveal">
-        <div class="skill-cat-title">Systems & Networking</div>
-        <ul class="skill-list">
-          <li>Enterprise Networking</li>
-          <li>Classified/Unclassified Systems</li>
-          <li>Secure Data-Link Architecture</li>
-          <li>Link-16 Operations</li>
-          <li>Hardware/Software Integration</li>
-          <li>Systems Troubleshooting</li>
-          <li>FCC GROL Licensed</li>
-          <li>COMPTIA Security+ (In Progress)</li>
-        </ul>
-      </div>
-
-      <div class="skill-category reveal">
-        <div class="skill-cat-title">Aviation & Operations</div>
-        <ul class="skill-list">
-          <li>KC-10 / KC-46 Avionics</li>
-          <li>Safety Investigation Boards</li>
-          <li>Technical Investigation</li>
-          <li>Telemetry Data Analysis</li>
-          <li>Fleet Resource Management</li>
-          <li>CAD / 3D Printing (Fusion 360)</li>
-          <li>UAS / Drone Operations</li>
-          <li>Expeditionary Operations</li>
-        </ul>
-      </div>
-
-      <div class="skill-category reveal">
-        <div class="skill-cat-title">Engineering & Innovation</div>
-        <ul class="skill-list">
-          <li>Hardware Design & Prototyping</li>
-          <li>Additive Manufacturing</li>
-          <li>Material Science (ASA, Silicone)</li>
-          <li>Cost-Benefit Analysis</li>
-          <li>Digital Transformation</li>
-          <li>Automation Strategy</li>
-          <li>Knowledge Management</li>
-          <li>Enterprise System Design</li>
-        </ul>
-      </div>
-
-      <div class="skill-category reveal">
-        <div class="skill-cat-title">Communication & Coordination</div>
-        <ul class="skill-list">
-          <li>Executive Briefings</li>
-          <li>Stakeholder Liaison</li>
-          <li>Technical Documentation</li>
-          <li>Inter-Agency Coordination</li>
-          <li>Military-Academic Partnerships</li>
-          <li>Secure Communications</li>
-          <li>Training Program Design</li>
-          <li>Compliance Management</li>
-        </ul>
-      </div>
+    <div class="skills-dots">
+      <button class="skills-dot active" data-index="0" aria-label="Go to slide 1"></button>
+      <button class="skills-dot" data-index="1" aria-label="Go to slide 2"></button>
+      <button class="skills-dot" data-index="2" aria-label="Go to slide 3"></button>
+      <button class="skills-dot" data-index="3" aria-label="Go to slide 4"></button>
+      <button class="skills-dot" data-index="4" aria-label="Go to slide 5"></button>
+      <button class="skills-dot" data-index="5" aria-label="Go to slide 6"></button>
     </div>
   </div>
 </section>
