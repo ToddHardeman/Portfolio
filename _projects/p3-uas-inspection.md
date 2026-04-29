@@ -5,6 +5,7 @@ summary: "Pioneered the first Unmanned Aerial System inspection methodology for 
 concept: "In collaboration with Skydio, this initiative developed and implemented the first-ever UAS-based inspection methodology for the C-17 Globemaster III aircraft platform. By leveraging drone technology and automated visual analysis, this project eliminated the need for conventional manual inspections in hazardous positions — dramatically improving safety, speed, and consistency."
 impact: "92% reduction in inspection duration · Enterprise-wide precedent established for automated maintenance · Significantly improved personnel safety and asset availability"
 impact_short: "92% inspection time reduction · Enterprise-wide automated maintenance precedent"
+image: assets/images/projects/p3-suasTravis.png
 software:
   - "Skydio (Drone Technology & Autonomous Flight Software)"
   - "MS Teams (Collaboration & Project Management)"
