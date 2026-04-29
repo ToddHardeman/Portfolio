@@ -81,6 +81,7 @@ setTimeout(updateLogoAnimation, 100);
 
 // ─── PROJECT CAROUSEL PHYSICS ────────────────────────────────
 const projectsContainer = document.querySelector(".projects-container");
+const projectsTrack = document.querySelector(".projects-track");
 if (projectsContainer) {
   let isDown = false;
   let startX;
@@ -227,7 +228,6 @@ if (skillsContainer && skillsTrack) {
 }
 
 // ─── PROJECTS CAROUSEL ───────────────────────────────────────
-const projectsTrack = document.querySelector('.projects-track');
 const projectsPrevBtn = document.querySelector('.projects-nav-prev');
 const projectsNextBtn = document.querySelector('.projects-nav-next');
 const projectsDotsNav = document.querySelectorAll('.projects-dot');
