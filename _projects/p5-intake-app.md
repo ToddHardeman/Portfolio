@@ -5,7 +5,7 @@ summary: "Co-developed and deployed a custom Power Apps intake application that 
 concept: "Enterprise-level organizations generate enormous volumes of administrative requests that, when handled manually, create bottlenecks, inconsistency, and data integrity issues. This co-development initiative built a custom intake application on the Microsoft Power Platform to automate and standardize the request reception and workflow management process."
 impact: "Modernized administrative infrastructure · Reduced operational costs · Improved data integrity · Faster response times for administrative requests at enterprise scale"
 impact_short: "Automated enterprise administrative intake · Eliminated manual processing bottlenecks"
-≈image: assets/images/projects/p5-EO_Intake.png
+image: assets/images/projects/p5-EO_Intake.png
 software:
   - "Microsoft Power Platform (Development Environment)"
   - "Power Apps (Front-End Interface Development)"
